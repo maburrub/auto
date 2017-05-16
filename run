@@ -17,8 +17,7 @@ git clean -fdx .
 # Import IAP package
 echo "Importing IAP package ..."
 ${UNITY_HOME}/Unity -quit -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
-cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
-cp ${AUTO_HOME}/src/IAPDemo.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
 
 # Build unity project
 echo "Building unity ..."
