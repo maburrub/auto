@@ -42,8 +42,9 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/iOS",BuildTarget.iOS,BuildOptions.None);
 	}
 
-	static void PerformAndroidBuild ()
+	static void PerformGalaxyBuild ()
 	{
+	    PlayerSettings.bundleIdentifier = "com.unity.purchasing.samsungappsbasic";
 		//EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.Android);
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/Android",BuildTarget.Android,BuildOptions.None);
 	}
