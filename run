@@ -9,26 +9,36 @@ setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap_1.11.0_rc4.unitypackage
 
 # Clean unity project
-echo "Cleaning up ..."
+echo "(1) ---------- Cleaning up"
+echo ${PROJECT_PATH}
+echo
 cd ${PROJECT_PATH}
-git checkout .
-git clean -fdx .
+git checkout . > /dev/null
+git clean -fdx . > /dev/null
 
 # Import IAP package
-echo "Importing IAP package ..."
-${UNITY_HOME}/Unity -quit -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+echo "(2) ---------- Importing IAP package"
+echo ${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+echo
+${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
 
 # Build unity project
-echo "Building unity ..."
+echo "(3) ---------- Building unity"
+echo ${UNITY_HOME}/Unity -batchMode -quit -nographicsi -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformOSXUniversalBuild
+echo
 ${UNITY_HOME}/Unity -batchMode -quit -nographicsi -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformOSXUniversalBuild
 
 # Launch application
-echo "Launching IAPDemo ..."
-open -a ${PROJECT_PATH}/Builds/OSX-Universal/IAPDemo.app $1
+echo "(4) ---------- Launching IAPDemo"
+echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
+echo
+open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
 
 # Quit application
 sleep 5
-echo "Closing IAPDemo ..."
-osascript -e 'quit app "IAPDemo"'
+echo "(5) ---------- Closing IAPDemo"
+echo osascript -e 'quit app "IAPAuto"'
+echo
+osascript -e 'quit app "IAPAuto"'
 
