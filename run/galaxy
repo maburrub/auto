@@ -22,14 +22,14 @@ echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage 
 echo
 ${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
-cp ${AUTO_HOME}/src/BillingMode.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources
+cp ${AUTO_HOME}/src/GalaxyBillingMode.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project
 echo "(3) ---------- Building unity"
-echo ${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
 echo
-${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
 
 # Launch application
 echo "(4) ---------- Launching IAPDemo"

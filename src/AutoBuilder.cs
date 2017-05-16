@@ -42,11 +42,15 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/iOS",BuildTarget.iOS,BuildOptions.None);
 	}
 
+	static void PerformGooglePlayBuild ()
+	{
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.eight.bit.avenue.amorcam");
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/google_play.apk",BuildTarget.Android,BuildOptions.None);
+	}
+	
 	static void PerformGalaxyBuild ()
 	{
-	    //PlayerSettings.bundleIdentifier = "com.unity.purchasing.samsungappsbasic";
 		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.unity.purchasing.samsungappsbasic");
-		//EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.Android);
-		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/Android",BuildTarget.Android,BuildOptions.None);
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/galaxy.apk",BuildTarget.Android,BuildOptions.None);
 	}
 }
