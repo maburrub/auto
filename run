@@ -1,0 +1,35 @@
+#!/bin/tcsh
+
+clear
+
+# Define some variables
+setenv UNITY_HOME /Applications/Unity5.6.0p3/Unity.app/Contents/MacOS
+setenv AUTO_HOME /Users/mohammed/Projects/auto
+setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
+setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap_1.11.0_rc4.unitypackage
+
+# Clean unity project
+echo "Cleaning up ..."
+cd ${PROJECT_PATH}
+git checkout .
+git clean -fdx .
+
+# Import IAP package
+echo "Importing IAP package ..."
+${UNITY_HOME}/Unity -quit -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
+cp ${AUTO_HOME}/src/IAPDemo.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+
+# Build unity project
+echo "Building unity ..."
+${UNITY_HOME}/Unity -batchMode -quit -nographicsi -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformOSXUniversalBuild
+
+# Launch application
+echo "Launching IAPDemo ..."
+open -a ${PROJECT_PATH}/Builds/OSX-Universal/IAPDemo.app $1
+
+# Quit application
+sleep 5
+echo "Closing IAPDemo ..."
+osascript -e 'quit app "IAPDemo"'
+
