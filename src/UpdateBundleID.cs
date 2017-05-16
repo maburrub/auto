@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿// C# example:
+using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 
@@ -9,7 +10,6 @@ public class UpdateBundleID {
 		string filename = pathToBuiltProject + "/Contents/Info.plist";
 		var fileContents = System.IO.File.ReadAllText(filename);
 		fileContents = fileContents.Replace("unity.Unity3d.IAPDemo", "com.unity3d.unityiap.mac.demo"); 
-		fileContents = fileContents.Replace("com.Company.ProductName", "com.unity3d.unityiap.mac.demo"); 
 		System.IO.File.WriteAllText(filename, fileContents);
 	}
 }

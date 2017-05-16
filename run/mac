@@ -22,6 +22,8 @@ echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage 
 echo
 ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+cp ${AUTO_HOME}/src/UpdateBundleID.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
+
 
 # Build unity project
 echo "(3) ---------- Building unity"
