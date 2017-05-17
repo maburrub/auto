@@ -7,6 +7,8 @@ setenv UNITY_HOME /Applications/Unity5.6.0p3/Unity.app/Contents/MacOS
 setenv AUTO_HOME /Users/mohammed/Projects/auto
 setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap_1.11.0_rc4.unitypackage
+setenv BUNDLE_ID com.unity.purchasing.samsungappsbasic
+setenv ACTIVITY com.unity3d.player.UnityPlayerActivity
 
 # Clean unity project
 echo "(1) ---------- Cleaning up"
@@ -20,27 +22,35 @@ git clean -fdx . > /dev/null
 echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 echo
-${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
 cp ${AUTO_HOME}/src/GalaxyBillingMode.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project
 echo "(3) ---------- Building unity"
-echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
 echo
-${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+
+# Uninstall APK
+echo "(4) ---------- Uninstall APK"
+adb uninstall ${BUNDLE_ID}
+
+# Install APK
+echo "(5) ---------- Install APK"
+adb install ${PROJECT_PATH}/Builds/galaxy.apk
 
 # Launch application
-echo "(4) ---------- Launching IAPDemo"
-echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
+echo "(6) ---------- Launching IAPAuto"
+echo adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
 echo
-#open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
+adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
 
 # Quit application
-#sleep 5
-echo "(5) ---------- Closing IAPDemo"
-echo osascript -e 'quit app "IAPAuto"'
+sleep 30
+echo "(7) ---------- Closing IAPAuto"
+echo adb shell pm clear ${BUNDLE_ID}
 echo
-#osascript -e 'quit app "IAPAuto"'
+adb shell pm clear ${BUNDLE_ID}
 

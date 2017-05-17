@@ -51,6 +51,7 @@ public static class AutoBuilder {
 	static void PerformGalaxyBuild ()
 	{
 		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.unity.purchasing.samsungappsbasic");
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.Android);
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/galaxy.apk",BuildTarget.Android,BuildOptions.None);
 	}
 }
