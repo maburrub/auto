@@ -8,7 +8,7 @@ setenv AUTO_HOME /Users/mohammed/Projects/auto
 setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap_1.11.0_rc4.unitypackage
 setenv BUNDLE_ID com.unity3d.unityiap.demo
-setenv DEVICe 654d380ec156801d17dd698928167e766f1d60eb
+setenv DEVICE_ID 654d380ec156801d17dd698928167e766f1d60eb
 
 # Clean unity project
 echo "(1) ---------- Cleaning up"
@@ -32,47 +32,11 @@ echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeM
 echo
 ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformiOSBuild
 
-# Build xcode project
-echo "(4) ---------- Building xcode project"
-echo xcodebuild -project ${PROJECT_PATH}/Builds/iOS/Unity-iPhone.xcodeproj build
-echo
-xcodebuild -project ${PROJECT_PATH}/Builds/iOS/Unity-iPhone.xcodeproj build
+# Deploy app to device
+echo "(4) ---------- Launch application"
+echo xcodebuild test -destination "platform=iOS,id=${DEVICE_ID}" -scheme Unity-iPhone -project ${PROJECT_PATH}/Builds/iOS/Unity-iPhone.xcodeproj
+xcodebuild test -destination "platform=iOS,id=${DEVICE_ID}" -scheme Unity-iPhone -project ${PROJECT_PATH}/Builds/iOS/Unity-iPhone.xcodeproj
 
-# Install app
-echo "(5) ---------- Installing app"
-echo xcrun simctl install ${DEVICE} ${PROJECT_PATH}/Builds/iOS/build/Release-iphoneos/demo.app
-echo
-xcrun simctl install ${DEVICE} ${PROJECT_PATH}/Builds/iOS/build/Release-iphoneos/demo.app
 
-xcrun -sdk iphoneos PackageApplication -v ${PROJECT_PATH}/Builds/iOS/build/Release-iphoneos/demo.app -o "${BUILD_HISTORY_DIR}/${APPLICATION_NAME}.ipa"
-
-#!/bin/sh
-
-# build.sh
-#
-# Created by Vincent Daubry on 19/01/10.
-# Copyright 2010 OCTO. All rights reserved.
-
-PROJDIR=${WORKSPACE}/___PROJECT NAME___
-PROJECT_NAME=___XCODE PROJECT NAME___
-TARGET_SDK="iphonesimulator4.0"
-PROJECT_BUILDDIR="${PROJDIR}/build/Release-iphoneos"
-TARGET_TEST_NAME="UnitTests"
-BUILD_HISTORY_DIR="/Users/barbu/Desktop"
-DEVELOPPER_NAME="iPhone Developer: M VINCENT DAUBRY (J9TS3TJRYX)"
-PROVISONNING_PROFILE = "/Users/barbu/Desktop/desire.mobileprovision"
- 
-# compile project
-echo Building Project
-cd "${PROJDIR}"
-xcodebuild -target "${PROJECT_NAME}" -sdk "${TARGET_SDK}" -configuration Release
-
-#Check if build succeeded
-if [ $? != 0 ]
-then
-  exit 1
-fi
-
-/usr/bin/xcrun -sdk iphoneos PackageApplication -v "${PROJECT_BUILDDIR}/${APPLICATION_NAME}.app" -o "${BUILD_HISTORY_DIR}/${APPLICATION_NAME}.ipa" --sign "${DEVELOPPER_NAME}" --embed "${PROVISONNING_PROFILE}"
 
 
