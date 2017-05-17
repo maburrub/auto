@@ -30,7 +30,7 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/Win64/" + GetProjectName() + ".exe",BuildTarget.StandaloneWindows64,BuildOptions.None);
 	}
  
-	static void PerformOSXUniversalBuild ()
+	static void PerformMacBuild ()
 	{
 		//EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.StandaloneOSXUniversal);
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/OSX-Universal/" + GetProjectName() + ".app",BuildTarget.StandaloneOSXUniversal,BuildOptions.None);
@@ -38,7 +38,10 @@ public static class AutoBuilder {
  
 	static void PerformiOSBuild ()
 	{
-		//EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.iOS);
+	    PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, "com.unity3d.unityiap.demo");
+	    PlayerSettings.iOS.appleDeveloperTeamID = "3XGDM87KDL";
+	    PlayerSettings.iOS.appleEnableAutomaticSigning = true;
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.iOS);
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/iOS",BuildTarget.iOS,BuildOptions.None);
 	}
 
