@@ -45,6 +45,7 @@ public static class AutoBuilder {
 	static void PerformGooglePlayBuild ()
 	{
 		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.eight.bit.avenue.amorcam");
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.Android);
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/google_play.apk",BuildTarget.Android,BuildOptions.None);
 	}
 	
