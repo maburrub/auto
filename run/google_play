@@ -15,14 +15,14 @@ echo "(1) ---------- Cleaning up"
 echo ${PROJECT_PATH}
 echo
 cd ${PROJECT_PATH}
-#git checkout . > /dev/null
-#git clean -fdx . > /dev/null
+git checkout . > /dev/null
+git clean -fdx . > /dev/null
 
 # Import IAP package
 echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 echo
-#${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
 cp ${AUTO_HOME}/src/GooglePlayBillingMode.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
@@ -31,36 +31,30 @@ cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasin
 echo "(3) ---------- Building unity"
 echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGooglePlayBuild
 echo
-#${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGooglePlayBuild
-
-# Code sign APK
-echo "(3) ---------- Code sign APK"
-echo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${AUTO_HOME}/src/Android_Keystore.keystore ${PROJECT_PATH}/Builds/google_play.apk 8bitavenue_iap
-echo
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${AUTO_HOME}/src/Android_Keystore.keystore ${PROJECT_PATH}/Builds/google_play.apk 8bitavenue_iap
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGooglePlayBuild
 
 # Uninstall APK
 echo "(4) ---------- Uninstall APK"
 echo adb uninstall ${BUNDLE_ID}
 echo
-#adb uninstall ${BUNDLE_ID}
+adb uninstall ${BUNDLE_ID}
 
 # Install APK
 echo "(5) ---------- Install APK"
 echo adb install ${PROJECT_PATH}/Builds/google_play.apk
 echo
-#adb install ${PROJECT_PATH}/Builds/google_play.apk
+adb install ${PROJECT_PATH}/Builds/google_play.apk
 
 # Launch application
 echo "(6) ---------- Launching IAPAuto"
 echo adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
 echo
-#adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
+adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
 
 # Quit application
-sleep 30
+sleep 15
 echo "(7) ---------- Closing IAPAuto"
 echo adb shell pm clear ${BUNDLE_ID}
 echo
-#adb shell pm clear ${BUNDLE_ID}
+adb shell pm clear ${BUNDLE_ID}
 
