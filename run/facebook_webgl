@@ -3,7 +3,7 @@
 clear
 
 # Define some variables
-setenv UNITY_HOME /Applications/Unity5.6.0p3/Unity.app/Contents/MacOS
+setenv UNITY_HOME /Applications/Unity5.6.0p1/Unity.app/Contents/MacOS
 setenv AUTO_HOME /Users/mohammed/Projects/auto
 setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage
@@ -21,27 +21,16 @@ echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 echo
 ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
-cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
-cp ${AUTO_HOME}/src/UpdateBundleID.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
-cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
+cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project
 echo "(3) ---------- Building unity"
-echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild
+echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformFacebookWebglBuild
 echo
-${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformFacebookWebglBuild
 
-# Launch application
-echo "(4) ---------- Launching IAPDemo"
-echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
-echo
-open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
-
-# Quit application
-sleep 5
-echo "(5) ---------- Closing IAPDemo"
-echo osascript -e 'quit app "IAPAuto"'
-echo
-osascript -e 'quit app "IAPAuto"'
-
+# Set app id ?
+# Compress build ?
+# Upload to facebook ?

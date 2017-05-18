@@ -293,7 +293,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"100.gold.coins", SamsungApps.Name},
 				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.az", AmazonApps.Name},
 				{"000000596581", TizenStore.Name},
-			    {"com.ee", MoolahAppStore.Name}
+			    {"com.ee", MoolahAppStore.Name},
+			    {"webgl.iapdemo.coins", FacebookStore.Name}
 			});
 
 		builder.AddProduct("sword", ProductType.NonConsumable, new IDs
@@ -304,7 +305,18 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"com.eight.bit.avenue.sword.1", WindowsStore.Name},
 				{"sword", SamsungApps.Name},
 				{"com.unity3d.unityiap.unityiapdemo.sword.az", AmazonApps.Name},
-				{"000000596583", TizenStore.Name}
+				{"000000596583", TizenStore.Name},
+				{"webgl.iapdemo.sword", FacebookStore.Name}
+			});
+			
+		builder.AddProduct("sword2", ProductType.NonConsumable, new IDs
+			{
+				{"webgl.iapdemo.sword2", FacebookStore.Name}
+			});
+			
+		builder.AddProduct("Sword of Slicing", ProductType.NonConsumable, new IDs
+			{
+				{"sword", FacebookStore.Name}
 			});
 
 		builder.AddProduct("subscription", ProductType.Subscription, new IDs
@@ -314,7 +326,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"com.eight.bit.avenue.amorcam.subscription.3", GooglePlay.Name},
 				{"com.eight.bit.avenue.subscription.1", WindowsStore.Name},
 				{"subscription", SamsungApps.Name},
-				{"com.unity3d.unityiap.unityiapdemo.subscription.annually", AmazonApps.Name}
+				{"com.unity3d.unityiap.unityiapdemo.subscription.annually", AmazonApps.Name},
+				{"webgl.iapdemo.subscription", FacebookStore.Name}
 			});
 		
 		// Write Amazon's JSON description of our products to storage when using Amazon's local sandbox.

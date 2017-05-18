@@ -36,6 +36,27 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/OSX-Universal/" + GetProjectName() + ".app",BuildTarget.StandaloneOSXUniversal,BuildOptions.None);
 	}
  
+	static void PerformFacebookWebglBuild ()
+	{
+		//targetPlatform (webgl or gameroom)
+		//package build for uploading
+		//appID
+		//Note we can use BuildOptions.AutoRunPlayer
+		//BuildTarget : facebook or gameroom ?
+		
+		PlayerSettings.Facebook.sdkVersion = "7.9.4";	
+		
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Facebook, BuildTarget.WebGL);	
+		
+		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        buildPlayerOptions.scenes = GetScenePaths();
+        buildPlayerOptions.locationPathName = "Builds/facebook";
+        buildPlayerOptions.target = BuildTarget.WebGL;
+        buildPlayerOptions.targetGroup = BuildTargetGroup.Facebook;
+        buildPlayerOptions.options = BuildOptions.None;
+        BuildPipeline.BuildPlayer(buildPlayerOptions);
+	}
+
 	static void PerformiOSBuild ()
 	{
 	    PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, "com.unity3d.unityiap.demo");

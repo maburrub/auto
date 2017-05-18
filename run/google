@@ -6,7 +6,7 @@ clear
 setenv UNITY_HOME /Applications/Unity5.6.0p3/Unity.app/Contents/MacOS
 setenv AUTO_HOME /Users/mohammed/Projects/auto
 setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
-setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap_1.11.0_rc4.unitypackage
+setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage
 setenv BUNDLE_ID com.eight.bit.avenue.amorcam
 setenv ACTIVITY com.unity3d.player.UnityPlayerActivity
 
