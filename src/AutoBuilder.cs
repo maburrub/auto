@@ -45,6 +45,7 @@ public static class AutoBuilder {
 		//BuildTarget : facebook or gameroom ?
 		
 		PlayerSettings.Facebook.sdkVersion = "7.9.4";	
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Facebook, "281077639005121");	
 		
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Facebook, BuildTarget.WebGL);	
 		
