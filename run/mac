@@ -3,7 +3,7 @@
 clear
 
 # Define some variables
-setenv UNITY_HOME /Applications/Unity5.6.0p3/Unity.app/Contents/MacOS
+setenv UNITY_HOME /Applications/Unity5.6.0p1/Unity.app/Contents/MacOS
 setenv AUTO_HOME /Users/mohammed/Projects/auto
 setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage

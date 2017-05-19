@@ -13,22 +13,22 @@ echo "(1) ---------- Cleaning up"
 echo ${PROJECT_PATH}
 echo
 cd ${PROJECT_PATH}
-#git checkout . > /dev/null
-#git clean -fdx . > /dev/null
+git checkout . > /dev/null
+git clean -fdx . > /dev/null
 
 # Import IAP package
 echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 echo
-#${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
-cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+cp ${AUTO_HOME}/src/IAPAuto_fb.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project
 echo "(3) ---------- Building unity"
 echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformFacebookWebglBuild
 echo
-#${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformFacebookWebglBuild
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformFacebookWebglBuild
 
 # Create facebook package
 echo "(4) ---------- Create facebook package"

@@ -308,6 +308,16 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"000000596583", TizenStore.Name},
 				{"webgl.iapdemo.sword", FacebookStore.Name}
 			});
+			
+		builder.AddProduct("sword2", ProductType.NonConsumable, new IDs
+			{
+				{"webgl.iapdemo.sword2", FacebookStore.Name}
+			});
+			
+		builder.AddProduct("Sword of Slicing", ProductType.NonConsumable, new IDs
+			{
+				{"sword", FacebookStore.Name}
+			});
 
 		builder.AddProduct("subscription", ProductType.Subscription, new IDs
 			{
@@ -349,6 +359,10 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		#endif
 		validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), appIdentifier);
 		#endif
+
+		//This should not cause any exceptions in android
+		Debug.Log("-------------- Setting locale to fr-FR");
+		System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR");
 
 		// Now we're ready to initialize Unity IAP.
 		UnityPurchasing.Initialize(this, builder);

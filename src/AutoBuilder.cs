@@ -74,6 +74,13 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/google_play.apk",BuildTarget.Android,BuildOptions.None);
 	}
 	
+	static void PerformFrenchLocaleBuild ()
+	{
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.eight.bit.avenue.amorcam");
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.Android);
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/fr_locale.apk",BuildTarget.Android,BuildOptions.None);
+	}
+	
 	static void PerformGalaxyBuild ()
 	{
 		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.unity.purchasing.samsungappsbasic");

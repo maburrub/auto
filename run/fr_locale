@@ -7,7 +7,7 @@ setenv UNITY_HOME /Applications/Unity5.6.0p1/Unity.app/Contents/MacOS
 setenv AUTO_HOME /Users/mohammed/Projects/auto
 setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage
-setenv BUNDLE_ID com.unity.purchasing.samsungappsbasic
+setenv BUNDLE_ID com.eight.bit.avenue.amorcam
 setenv ACTIVITY com.unity3d.player.UnityPlayerActivity
 
 # Clean unity project
@@ -23,15 +23,15 @@ echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 echo
 ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
-cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
-cp ${AUTO_HOME}/src/BillingMode_galaxy.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
+cp ${AUTO_HOME}/src/IAPAuto_fr.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+cp ${AUTO_HOME}/src/GooglePlayBillingMode.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project
 echo "(3) ---------- Building unity"
-echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformFrenchLocaleBuild
 echo
-${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformFrenchLocaleBuild
 
 # Uninstall APK
 echo "(4) ---------- Uninstall APK"
@@ -41,9 +41,9 @@ adb uninstall ${BUNDLE_ID}
 
 # Install APK
 echo "(5) ---------- Install APK"
-echo adb install ${PROJECT_PATH}/Builds/galaxy.apk
+echo adb install ${PROJECT_PATH}/Builds/fr_locale.apk
 echo
-adb install ${PROJECT_PATH}/Builds/galaxy.apk
+adb install ${PROJECT_PATH}/Builds/fr_locale.apk
 
 # Launch application
 echo "(6) ---------- Launching IAPAuto"
@@ -52,7 +52,7 @@ echo
 adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
 
 # Quit application
-sleep 30
+sleep 15
 echo "(7) ---------- Closing IAPAuto"
 echo adb shell pm clear ${BUNDLE_ID}
 echo
