@@ -34,7 +34,7 @@ public static class AutoBuilder {
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneOSXUniversal);
 	    PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Standalone, "com.unity3d.unityiap.mac.demo");
-		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/OSX-Universal/" + GetProjectName() + ".app",BuildTarget.StandaloneOSXUniversal,BuildOptions.None);
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/OSX-Universal/" + GetProjectName() + "_mac.app",BuildTarget.StandaloneOSXUniversal,BuildOptions.None);
 	}
  
 	static void PerformFacebookWebglBuild ()

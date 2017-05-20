@@ -34,7 +34,7 @@ ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod
 
 # Launch application
 echo "(4) ---------- Launching IAPDemo"
-echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
+echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap_mac.app $1
 echo
 open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap.app $1
 
