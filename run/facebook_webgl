@@ -21,7 +21,7 @@ echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 echo
 ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
-cp ${AUTO_HOME}/src/IAPAuto_fb.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+cp ${AUTO_HOME}/src/IAPAuto_fb.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script/IAPAuto.cs
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project
