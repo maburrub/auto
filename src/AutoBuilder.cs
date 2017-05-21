@@ -87,6 +87,13 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/double_init.apk",BuildTarget.Android,BuildOptions.None);
 	}
 
+	static void PerformUnknownProdBuild ()
+	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.eight.bit.avenue.amorcam");
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/unknown_prod.apk",BuildTarget.Android,BuildOptions.None);
+	}
+	
 	static void PerformGooglePlayBuild ()
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
