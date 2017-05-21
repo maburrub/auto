@@ -94,10 +94,17 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/fr_locale.apk",BuildTarget.Android,BuildOptions.None);
 	}
 	
-	static void PerformGalaxyBuild ()
+	static void PerformGalaxyPassBuild ()
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
 		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.unity.purchasing.samsungappsbasic");
-		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/galaxy.apk",BuildTarget.Android, BuildOptions.None);
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/galaxy_pass.apk",BuildTarget.Android, BuildOptions.None);
+	}
+
+	static void PerformGalaxyFailBuild ()
+	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.unity.purchasing.samsungappsbasic");
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/galaxy_fail.apk",BuildTarget.Android, BuildOptions.None);
 	}
 }

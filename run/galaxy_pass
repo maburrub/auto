@@ -29,9 +29,9 @@ cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasin
 
 # Build unity project
 echo "(3) ---------- Building unity"
-echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyPassBuild
 echo
-${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyBuild
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformGalaxyPassBuild
 
 # Uninstall APK
 echo "(4) ---------- Uninstall APK"
@@ -41,9 +41,9 @@ adb uninstall ${BUNDLE_ID}
 
 # Install APK
 echo "(5) ---------- Install APK"
-echo adb install ${PROJECT_PATH}/Builds/galaxy.apk
+echo adb install ${PROJECT_PATH}/Builds/galaxy_pass.apk
 echo
-adb install ${PROJECT_PATH}/Builds/galaxy.apk
+adb install ${PROJECT_PATH}/Builds/galaxy_pass.apk
 
 # Launch application
 echo "(6) ---------- Launching IAPAuto"
