@@ -309,6 +309,10 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"000000596581", TizenStore.Name},
 			    {"com.ee", MoolahAppStore.Name},
 			    {"webgl.iapdemo.coins", FacebookStore.Name}
+			    
+			    #if USE_PAYOUTS
+				, new PayoutDefinition(PayoutType.Currency, "gold", 100)
+				#endif
 			});
 
 		builder.AddProduct("sword", ProductType.NonConsumable, new IDs
@@ -321,6 +325,13 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"com.unity3d.unityiap.unityiapdemo.sword.az", AmazonApps.Name},
 				{"000000596583", TizenStore.Name},
 				{"webgl.iapdemo.sword", FacebookStore.Name}
+				
+				#if USE_PAYOUTS
+				, new List<PayoutDefinition> {
+            		new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
+            		new PayoutDefinition(PayoutType.Currency, "gold", 50)
+        		}
+				#endif
 			});
 
 		builder.AddProduct("subscription", ProductType.Subscription, new IDs
