@@ -4,6 +4,7 @@
 #define RECEIPT_VALIDATION
 #endif
 //#define DELAY_CONFIRMATION // Returns PurchaseProcessingResult.Pending from ProcessPurchase, then calls ConfirmPendingPurchase after a delay
+//#define USE_PAYOUTS // Enables use of PayoutDefinitions to specify what the player should receive when a product is purchased
 
 using System;
 using System.Collections;
@@ -121,6 +122,9 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		Debug.Log("Receipt: " + e.purchasedProduct.receipt);
 
 		m_LastTransationID = e.purchasedProduct.transactionID;
+
+		Debug.Log("-------------- m_LastTransationID = " + m_LastTransationID);
+
 		m_LastReceipt = e.purchasedProduct.receipt;
 		m_PurchaseInProgress = false;
 
@@ -181,6 +185,14 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		}
 
 		// You should unlock the content here.
+#if USE_PAYOUTS
+		if (e.purchasedProduct.definition.payouts != null) {
+            Debug.Log("Purchase complete, paying out based on defined payouts");
+            foreach (var payout in e.purchasedProduct.definition.payouts) {
+                Debug.Log(string.Format("Granting {0} {1} {2} {3}", payout.quantity, payout.typeString, payout.subtype, payout.data));
+            }
+        }
+#endif
 
 		// Indicate if we have handled this purchase. 
 		//   PurchaseProcessingResult.Complete: ProcessPurchase will not be called
