@@ -24,7 +24,7 @@ echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage 
 echo
 ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
 cp ${AUTO_HOME}/src/IAPAuto_fr.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script/IAPAuto.cs
-cp ${AUTO_HOME}/src/GooglePlayBillingMode.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
+cp ${AUTO_HOME}/src/BillingMode_google.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project

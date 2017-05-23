@@ -309,16 +309,6 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"webgl.iapdemo.sword", FacebookStore.Name}
 			});
 			
-		builder.AddProduct("sword2", ProductType.NonConsumable, new IDs
-			{
-				{"webgl.iapdemo.sword2", FacebookStore.Name}
-			});
-			
-		builder.AddProduct("Sword of Slicing", ProductType.NonConsumable, new IDs
-			{
-				{"sword", FacebookStore.Name}
-			});
-
 		builder.AddProduct("subscription", ProductType.Subscription, new IDs
 			{
 				{"com.unity3d.unityiap.unityiapdemo.subscription", AppleAppStore.Name},
