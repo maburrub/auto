@@ -128,6 +128,9 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		m_LastReceipt = e.purchasedProduct.receipt;
 		m_PurchaseInProgress = false;
 
+		// Now that my purchase history has changed, update its UI
+		UpdateHistoryUI();
+
 		#if RECEIPT_VALIDATION
 		// Local validation is available for GooglePlay and Apple stores
 		if (m_IsGooglePlayStoreSelected ||
