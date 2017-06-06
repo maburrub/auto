@@ -159,8 +159,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 						Debug.Log("-------------- apple.quantity = " + apple.quantity);
 					}
 				}
-			} catch (IAPSecurityException) {
-				Debug.Log("-------------- Invalid receipt, not unlocking content");
+			} catch (IAPSecurityException se) {
+				Debug.Log("-------------- Invalid receipt, not unlocking content. "+se);
 				return PurchaseProcessingResult.Complete;
 			}
 		}
