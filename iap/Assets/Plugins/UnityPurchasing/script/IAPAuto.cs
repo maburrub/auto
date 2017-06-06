@@ -4,6 +4,7 @@
 #define RECEIPT_VALIDATION
 #endif
 //#define DELAY_CONFIRMATION // Returns PurchaseProcessingResult.Pending from ProcessPurchase, then calls ConfirmPendingPurchase after a delay
+//#define USE_PAYOUTS // Enables use of PayoutDefinitions to specify what the player should receive when a product is purchased
 
 using System;
 using System.Collections;
@@ -121,8 +122,14 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		Debug.Log("Receipt: " + e.purchasedProduct.receipt);
 
 		m_LastTransationID = e.purchasedProduct.transactionID;
+
+		Debug.Log("-------------- m_LastTransationID = " + m_LastTransationID);
+
 		m_LastReceipt = e.purchasedProduct.receipt;
 		m_PurchaseInProgress = false;
+
+		// Now that my purchase history has changed, update its UI
+		UpdateHistoryUI();
 
 		#if RECEIPT_VALIDATION
 		// Local validation is available for GooglePlay and Apple stores
@@ -152,8 +159,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 						Debug.Log("-------------- apple.quantity = " + apple.quantity);
 					}
 				}
-			} catch (IAPSecurityException) {
-				Debug.Log("-------------- Invalid receipt, not unlocking content");
+			} catch (IAPSecurityException se) {
+				Debug.Log("-------------- Invalid receipt, not unlocking content. "+se);
 				return PurchaseProcessingResult.Complete;
 			}
 		}
@@ -181,6 +188,14 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		}
 
 		// You should unlock the content here.
+#if USE_PAYOUTS
+		if (e.purchasedProduct.definition.payouts != null) {
+            Debug.Log("Purchase complete, paying out based on defined payouts");
+            foreach (var payout in e.purchasedProduct.definition.payouts) {
+                Debug.Log(string.Format("Granting {0} {1} {2} {3}", payout.quantity, payout.typeString, payout.subtype, payout.data));
+            }
+        }
+#endif
 
 		// Indicate if we have handled this purchase. 
 		//   PurchaseProcessingResult.Complete: ProcessPurchase will not be called
@@ -272,7 +287,9 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		builder.Configure<IMoolahConfiguration>().hashKey = "cc";
 		// This enables the CloudMoolah test mode for local testing.
 		// You would remove this, or set to CloudMoolahMode.Production, before building your release package.
-		builder.Configure<IMoolahConfiguration>().SetMode(CloudMoolahMode.AlwaysSucceed);
+		
+		//You can also use AlwaysSucceed
+		builder.Configure<IMoolahConfiguration>().SetMode(CloudMoolahMode.Production);
 		// This records whether we are using Cloud Moolah IAP. 
 		// Cloud Moolah requires logging in to access your Digital Wallet, so: 
 		// A) IAPDemo (this) displays the Cloud Moolah GUI button for Cloud Moolah
@@ -293,7 +310,12 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"100.gold.coins", SamsungApps.Name},
 				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.az", AmazonApps.Name},
 				{"000000596581", TizenStore.Name},
-			    {"com.ee", MoolahAppStore.Name}
+			    {"com.ee", MoolahAppStore.Name},
+			    {"webgl.iapdemo.coins", FacebookStore.Name}
+			    
+			    #if USE_PAYOUTS
+				, new PayoutDefinition(PayoutType.Currency, "gold", 100)
+				#endif
 			});
 
 		builder.AddProduct("sword", ProductType.NonConsumable, new IDs
@@ -304,7 +326,15 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"com.eight.bit.avenue.sword.1", WindowsStore.Name},
 				{"sword", SamsungApps.Name},
 				{"com.unity3d.unityiap.unityiapdemo.sword.az", AmazonApps.Name},
-				{"000000596583", TizenStore.Name}
+				{"000000596583", TizenStore.Name},
+				{"webgl.iapdemo.sword", FacebookStore.Name}
+				
+				#if USE_PAYOUTS
+				, new List<PayoutDefinition> {
+            		new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
+            		new PayoutDefinition(PayoutType.Currency, "gold", 50)
+        		}
+				#endif
 			});
 
 		builder.AddProduct("subscription", ProductType.Subscription, new IDs
@@ -314,7 +344,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"com.eight.bit.avenue.amorcam.subscription.3", GooglePlay.Name},
 				{"com.eight.bit.avenue.subscription.1", WindowsStore.Name},
 				{"subscription", SamsungApps.Name},
-				{"com.unity3d.unityiap.unityiapdemo.subscription.annually", AmazonApps.Name}
+				{"com.unity3d.unityiap.unityiapdemo.subscription.annually", AmazonApps.Name},
+				{"webgl.iapdemo.subscription", FacebookStore.Name}
 			});
 		
 		// Write Amazon's JSON description of our products to storage when using Amazon's local sandbox.
@@ -324,7 +355,7 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		// This enables simulated purchase success for Samsung IAP.
 		// You would remove this, or set to SamsungAppsMode.Production, before building your release package.
 		builder.Configure<ISamsungAppsConfiguration>().SetMode(SamsungAppsMode.AlwaysSucceed);
-		builder.Configure<ISamsungAppsConfiguration>().SetMode(SamsungAppsMode.AlwaysFail);
+		//builder.Configure<ISamsungAppsConfiguration>().SetMode(SamsungAppsMode.AlwaysFail);
 		// This records whether we are using Samsung IAP. Currently ISamsungAppsExtensions.RestoreTransactions
 		// displays a blocking Android Activity, so: 
 		// A) Unity IAP does not automatically restore purchases on Samsung Galaxy Apps
