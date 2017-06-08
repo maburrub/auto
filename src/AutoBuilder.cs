@@ -45,7 +45,7 @@ public static class AutoBuilder {
 
 		PlayerSettings.Facebook.sdkVersion = "7.9.4";
 		List<string> appIds = new List<string>();
-		appIds.Add("281077639005121");
+		appIds.Add("339961179753667");
 		Facebook.Unity.Settings.FacebookSettings.AppIds = appIds;
 				
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
