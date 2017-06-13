@@ -24,6 +24,19 @@ public static class AutoBuilder {
 		return scenes;
 	}
 
+    static void PerformWindowsUniversalBuild()
+        {
+
+	        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.WSA, BuildTarget.WSAPlayer);
+		//EditorUserBuildSettings.SetWSADotNetNative(WSABuildType.Release, true);
+		EditorUserBuildSettings.wsaBuildAndRunDeployTarget = WSABuildAndRunDeployTarget.LocalMachine;
+		EditorUserBuildSettings.wsaSDK = WSASDK.UWP;
+		EditorUserBuildSettings.wsaSubtarget = WSASubtarget.PC;
+	        EditorUserBuildSettings.wsaUWPBuildType = WSAUWPBuildType.XAML;
+	        EditorUserBuildSettings.wsaUWPSDK = "10.0.10586.0";
+	        BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/WindowsUniversal", BuildTarget.WSAPlayer, BuildOptions.None);
+        }
+
 	static void PerformWin64Build ()
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows);
