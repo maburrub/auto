@@ -128,6 +128,9 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		m_LastReceipt = e.purchasedProduct.receipt;
 		m_PurchaseInProgress = false;
 
+		// Now that my purchase history has changed, update its UI
+		UpdateHistoryUI();
+
 		#if RECEIPT_VALIDATION
 		// Local validation is available for GooglePlay and Apple stores
 		if (m_IsGooglePlayStoreSelected ||
@@ -156,8 +159,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 						Debug.Log("-------------- apple.quantity = " + apple.quantity);
 					}
 				}
-			} catch (IAPSecurityException) {
-				Debug.Log("-------------- Invalid receipt, not unlocking content");
+			} catch (IAPSecurityException se) {
+				Debug.Log("-------------- Invalid receipt, not unlocking content. "+se);
 				return PurchaseProcessingResult.Complete;
 			}
 		}

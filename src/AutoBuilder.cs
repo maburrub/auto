@@ -45,7 +45,7 @@ public static class AutoBuilder {
 
 		PlayerSettings.Facebook.sdkVersion = "7.9.4";
 		List<string> appIds = new List<string>();
-		appIds.Add("281077639005121");
+		appIds.Add("339961179753667");
 		Facebook.Unity.Settings.FacebookSettings.AppIds = appIds;
 				
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
@@ -73,6 +73,13 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/reset_non_consumable.apk", BuildTarget.Android,BuildOptions.None);
 	}
 
+	static void PerformXiaomiBuild ()
+	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.unity.channel.sdk.sample");
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/xiaomi.apk",BuildTarget.Android,BuildOptions.None);
+	}
+
 	static void PerformCloudMoolahBuild ()
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
@@ -94,6 +101,14 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/unknown_prod.apk",BuildTarget.Android,BuildOptions.None);
 	}
 	
+	static void PerformGooglePlayIl2cppBuild ()
+	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.eight.bit.avenue.amorcam");
+		PlayerSettings.SetPropertyInt( "ScriptingBackend", (int)ScriptingImplementation.IL2CPP, BuildTargetGroup.Android);
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/google_play.apk",BuildTarget.Android,BuildOptions.None);
+	}
+
 	static void PerformGooglePlayBuild ()
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
