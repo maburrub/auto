@@ -23,7 +23,7 @@ using UnityEngine.Purchasing.Security;
 /// To use with your account, configure the product ids (AddProduct).
 /// </summary>
 [AddComponentMenu("Unity IAP/Demo")]
-public class IAPDemo : MonoBehaviour, IStoreListener
+public class IAPAuto : MonoBehaviour, IStoreListener
 {
 	// Unity IAP objects
 	private IStoreController m_Controller;
