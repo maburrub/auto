@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+
+clear
+
+# Define some variables
+UNITY_HOME="/c/Program Files/Unity/Editor"
+AUTO_HOME="/c/Users/mohammed/Documents/auto"
+PROJECT_PATH="/c/Users/mohammed/Documents/auto/iap"
+PKG_PATH="/c/Users/mohammed/Documents/auto/pkg/iap.unitypackage"
+
+# Clean unity project
+echo "(1) ---------- Cleaning up"
+echo ${PROJECT_PATH}
+echo
+cd "${PROJECT_PATH}"
+git checkout . > /dev/null
+git clean -fdx . > /dev/null
+
+# Import IAP package
+echo "(2) ---------- Importing IAP package"
+echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+echo
+"${UNITY_HOME}"/Unity -batchMode -projectPath "${PROJECT_PATH}" -importPackage "${PKG_PATH}"
+cp "${AUTO_HOME}"/src/IAPAuto_win.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurchasing/script/IAPAuto.cs
+cp "${AUTO_HOME}"/src/AutoBuilder.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurchasing/Editor
+
+# Build unity project
+echo "(3) ---------- Building unity"
+echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformWindowsUniversalBuild
+echo
+"${UNITY_HOME}"/Unity -batchMode -quit -projectPath "${PROJECT_PATH}" -executeMethod AutoBuilder.PerformWindowsUniversalBuild
+
+
+
+cp "${AUTO_HOME}"/src/Package.appxmanifest "${PROJECT_PATH}"/Builds/WindowsUniversal/IAPAuto
+
+
+
+
