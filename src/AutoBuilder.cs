@@ -73,6 +73,13 @@ public static class AutoBuilder {
 		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/reset_non_consumable.apk", BuildTarget.Android,BuildOptions.None);
 	}
 
+	static void PerformXiaomiBuild ()
+	{
+		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+		PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.unity.channel.sdk.sample");
+		BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/xiaomi.apk",BuildTarget.Android,BuildOptions.None);
+	}
+
 	static void PerformCloudMoolahBuild ()
 	{
 		EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);

@@ -1,0 +1,63 @@
+#!/bin/tcsh
+
+clear
+
+# Define some variables
+setenv UNITY_HOME /Applications/Unity5.6.0p1/Unity.app/Contents/MacOS
+setenv AUTO_HOME /Users/mohammed/Projects/auto
+setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
+setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage
+setenv BUNDLE_ID com.unity.channel.sdk.sample
+setenv ACTIVITY com.unity3d.player.UnityPlayerActivity
+
+# Clean unity project
+echo "(1) ---------- Cleaning up"
+echo ${PROJECT_PATH}
+echo
+cd ${PROJECT_PATH}
+git checkout . > /dev/null
+git clean -fdx . > /dev/null
+
+# Import IAP package
+echo "(2) ---------- Importing IAP package"
+echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+echo
+${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+cp ${AUTO_HOME}/src/IAPAuto_xiaomi.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+cp ${AUTO_HOME}/src/BillingMode_xiaomi.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
+cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
+cp -r ${AUTO_HOME}/src/Android ${PROJECT_PATH}/Assets/Plugins
+cp ${AUTO_HOME}/src/IAPProductCatalog.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources
+
+
+# Build unity project
+echo "(3) ---------- Building unity"
+echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformXiaomiBuild
+echo
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformXiaomiBuild
+
+# Uninstall APK
+echo "(4) ---------- Uninstall APK"
+echo adb uninstall ${BUNDLE_ID}
+echo
+adb uninstall ${BUNDLE_ID}
+
+# Install APK
+echo "(5) ---------- Install APK"
+echo adb install ${PROJECT_PATH}/Builds/xiaomi.apk
+echo
+adb install ${PROJECT_PATH}/Builds/xiaomi.apk
+
+# Launch application
+echo "(6) ---------- Launching IAPAuto"
+echo adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
+echo
+adb shell am start -n ${BUNDLE_ID}/${ACTIVITY}
+
+# Quit application
+sleep 15
+echo "(7) ---------- Closing IAPAuto"
+echo adb shell pm clear ${BUNDLE_ID}
+echo
+adb shell pm clear ${BUNDLE_ID}
+
