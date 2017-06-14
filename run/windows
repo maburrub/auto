@@ -31,8 +31,9 @@ echo
 "${UNITY_HOME}"/Unity -batchMode -quit -projectPath "${PROJECT_PATH}" -executeMethod AutoBuilder.PerformWindowsUniversalBuild
 
 # Build VS project
-cp "${AUTO_HOME}"/src/Package.appxmanifest "${PROJECT_PATH}"/Builds/WindowsUniversal/IAPAuto
-C:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe "${PROJECT_PATH}"/Builds/WindowsUniversal/IAPAuto.sln
+# cp cPackage.appxmanifest "${PROJECT_PATH}"/Builds/WindowsUniversal/IAPAuto
+# "${AUTO_HOME}"/run/nuget.exe restore "${PROJECT_PATH}"/Builds/WindowsUniversal/IAPAuto.sln
+# C:/Windows/Microsoft.NET/Framework64/v4.0.30319/msbuild.exe "${PROJECT_PATH}"/Builds/WindowsUniversal/IAPAuto.sln
 
 # Launch application
 
