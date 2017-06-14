@@ -27,14 +27,14 @@ public static class AutoBuilder {
     static void PerformWindowsUniversalBuild()
         {
 
-	        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.WSA, BuildTarget.WSAPlayer);
-		//EditorUserBuildSettings.SetWSADotNetNative(WSABuildType.Release, true);
-		EditorUserBuildSettings.wsaBuildAndRunDeployTarget = WSABuildAndRunDeployTarget.LocalMachine;
-		EditorUserBuildSettings.wsaSDK = WSASDK.UWP;
-		EditorUserBuildSettings.wsaSubtarget = WSASubtarget.PC;
-	        EditorUserBuildSettings.wsaUWPBuildType = WSAUWPBuildType.XAML;
-	        EditorUserBuildSettings.wsaUWPSDK = "10.0.10586.0";
-	        BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/WindowsUniversal", BuildTarget.WSAPlayer, BuildOptions.None);
+        	EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.WSA, BuildTarget.WSAPlayer);
+        	EditorUserBuildSettings.SetWSADotNetNative(WSABuildType.Debug, true);
+        	EditorUserBuildSettings.wsaBuildAndRunDeployTarget = WSABuildAndRunDeployTarget.LocalMachineAndWindowsPhone;
+        	EditorUserBuildSettings.wsaSDK = WSASDK.UWP;
+        	EditorUserBuildSettings.wsaSubtarget = WSASubtarget.AnyDevice;
+        	EditorUserBuildSettings.wsaUWPBuildType = WSAUWPBuildType.XAML;
+        	EditorUserBuildSettings.wsaUWPSDK = "10.0.10586.0";
+        	BuildPipeline.BuildPlayer(GetScenePaths(), "Builds/WindowsUniversal", BuildTarget.WSAPlayer, BuildOptions.None);
         }
 
 	static void PerformWin64Build ()
