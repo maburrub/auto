@@ -18,9 +18,9 @@ git clean -fdx . > /dev/null
 
 # Import IAP package
 echo "(2) ---------- Importing IAP package"
-echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
 echo
-${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH}
+${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
 cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
 cp ${AUTO_HOME}/src/UpdateBundleID.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
@@ -28,9 +28,9 @@ cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasin
 
 # Build unity project
 echo "(3) ---------- Building unity"
-echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild
+echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild -logFile ${AUTO_HOME}/build.log
 echo
-${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild
+${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild -logFile ${AUTO_HOME}/build.log
 
 # Launch application
 echo "(4) ---------- Launching IAPDemo"
