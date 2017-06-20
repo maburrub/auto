@@ -25,7 +25,6 @@ cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/sc
 cp ${AUTO_HOME}/src/UpdateBundleID.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
-
 # Build unity project
 echo "(3) ---------- Building unity"
 echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild -logFile ${AUTO_HOME}/build.log
@@ -33,14 +32,14 @@ echo
 ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformMacBuild -logFile ${AUTO_HOME}/build.log
 
 # Launch application
-echo "(4) ---------- Launching IAPDemo"
+echo "(4) ---------- Launching IAPAuto"
 echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap_mac.app $1
 echo
 open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap_mac.app $1
 
 # Quit application
 sleep 5
-echo "(5) ---------- Closing IAPDemo"
+echo "(5) ---------- Closing IAPAuto"
 echo osascript -e 'quit app "IAPAuto"'
 echo
 osascript -e 'quit app "IAPAuto"'
