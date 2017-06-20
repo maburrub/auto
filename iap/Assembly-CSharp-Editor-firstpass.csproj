@@ -49,7 +49,6 @@
      <Compile Include="Assets\Plugins\UnityPurchasing\Editor\AutoBuilder.cs" />
      <Compile Include="Assets\Plugins\UnityPurchasing\Editor\IAPButtonEditor.cs" />
      <Compile Include="Assets\Plugins\UnityPurchasing\Editor\UnityPurchasingEditor.cs" />
-     <Compile Include="Assets\Plugins\UnityPurchasing\Editor\UpdateBundleID.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/mohammed/Projects/auto/iap/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
@@ -143,17 +142,17 @@
  <Reference Include="Purchasing.Common">
  <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Purchasing.Common.dll</HintPath>
  </Reference>
+ <Reference Include="Security">
+ <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Security.dll</HintPath>
+ </Reference>
  <Reference Include="Stores">
  <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
  </Reference>
  <Reference Include="Apple">
  <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
  </Reference>
- <Reference Include="FacebookStore">
- <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Facebook/FacebookStore.dll</HintPath>
- </Reference>
- <Reference Include="Security">
- <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Security/live/Security.dll</HintPath>
+ <Reference Include="Facebook">
+ <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Facebook/Facebook.dll</HintPath>
  </Reference>
  <Reference Include="Tizen">
  <HintPath>/Users/mohammed/Projects/auto/iap/Assets/Plugins/UnityPurchasing/Bin/Tizen/Tizen.dll</HintPath>
