@@ -49,7 +49,6 @@
      <Compile Include="Assets\Plugins\UnityPurchasing\Editor\AutoBuilder.cs" />
      <Compile Include="Assets\Plugins\UnityPurchasing\Editor\IAPButtonEditor.cs" />
      <Compile Include="Assets\Plugins\UnityPurchasing\Editor\UnityPurchasingEditor.cs" />
-     <Compile Include="Assets\Plugins\UnityPurchasing\Editor\UpdateBundleID.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/mohammed/Projects/auto/iap/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
