@@ -22,7 +22,7 @@ git clean -fdx . > /dev/null
 echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
 echo
-${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
+${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
 cp ${AUTO_HOME}/src/IAPAuto_xiaomi.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script/IAPAuto.cs
 cp ${AUTO_HOME}/src/BillingMode_xiaomi.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
@@ -34,7 +34,7 @@ cp ${AUTO_HOME}/src/IAPProductCatalog.json ${PROJECT_PATH}/Assets/Plugins/UnityP
 echo "(3) ---------- Building unity"
 echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformXiaomiBuild -logFile ${AUTO_HOME}/build.log
 echo
-${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformXiaomiBuild -logFile ${AUTO_HOME}/build.log
+${UNITY_HOME}/Unity -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformXiaomiBuild -logFile ${AUTO_HOME}/build.log
 
 # Uninstall APK
 echo "(4) ---------- Uninstall APK"

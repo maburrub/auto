@@ -461,7 +461,7 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 			unityChannelAppInfo.appKey    = "5961754010412";
 			unityChannelAppInfo.clientId  = "isk45bIhmLYtWP36C1Ka1Q";
 			unityChannelAppInfo.clientKey = "vRMkamTnPZy8tOjWpMwQN7KVTig6WSvUPae92vIeiPQ";
-			unityChannelAppInfo.debug = true;
+			unityChannelAppInfo.debug = false;
 
 	        // Shared handler for Unity Channel initialization, here, and login, later
 	        unityChannelLoginHandler = new UnityChannelLoginHandler();
