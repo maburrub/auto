@@ -3,11 +3,10 @@
 // before receipt validation will compile in this sample.
 // #define RECEIPT_VALIDATION
 #endif
-
-// Define to automatically read products from the IAP Catalog GUI
-#define USE_IAP_CATALOG
+//#define DELAY_CONFIRMATION // Returns PurchaseProcessingResult.Pending from ProcessPurchase, then calls ConfirmPendingPurchase after a delay
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -129,9 +128,6 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		m_LastReceipt = e.purchasedProduct.receipt;
 		m_PurchaseInProgress = false;
 
-		// Now that my purchase history has changed, update its UI
-		UpdateHistoryUI();
-
 	    // Decode the UnityChannelPurchaseReceipt, extracting the gameOrderId
 	    if (m_IsUnityChannelSelected)
 	    {
@@ -139,8 +135,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 	        if (unifiedReceipt != null && !string.IsNullOrEmpty(unifiedReceipt.Payload))
 	        {
 	            var purchaseReceipt = JsonUtility.FromJson<UnityChannelPurchaseReceipt>(unifiedReceipt.Payload);
-	            Debug.LogFormat("UnityChannel receipt: productCode = {0}, gameOrderId = {1}, orderQueryToken = {2}",
-	                purchaseReceipt.productCode, purchaseReceipt.gameOrderId, purchaseReceipt.orderQueryToken);
+	            Debug.LogFormat("UnityChannel receipt: storeSpecificId = {0}, transactionId = {1}, orderQueryToken = {2}",
+	                purchaseReceipt.storeSpecificId, purchaseReceipt.transactionId, purchaseReceipt.orderQueryToken);
 	        }
 	    }
 
@@ -234,8 +230,32 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		//     m_Controller.ConfirmPendingPurchase(Product) to complete handling
 		//     this purchase. Use to transactionally save purchases to a cloud
 		//     game service.
+#if DELAY_CONFIRMATION
+		StartCoroutine(ConfirmPendingPurchaseAfterDelay(e.purchasedProduct));
+		return PurchaseProcessingResult.Pending;
+#else
+		UpdateHistoryUI();
 		return PurchaseProcessingResult.Complete;
+#endif
 	}
+
+#if DELAY_CONFIRMATION
+	private HashSet<string> m_PendingProducts = new HashSet<string>();
+
+	private IEnumerator ConfirmPendingPurchaseAfterDelay(Product p)
+	{
+		m_PendingProducts.Add(p.definition.id);
+		Debug.Log("Delaying confirmation of " + p.definition.id + " for 5 seconds.");
+		UpdateHistoryUI();
+
+		yield return new WaitForSeconds(5f);
+
+		Debug.Log("Confirming purchase of " + p.definition.id);
+		m_Controller.ConfirmPendingPurchase(p);
+		m_PendingProducts.Remove(p.definition.id);
+		UpdateHistoryUI();
+	}
+#endif
 
 	/// <summary>
 	/// This will be called is an attempted purchase fails.
@@ -305,8 +325,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
     [Serializable]
     public class UnityChannelPurchaseInfo
     {
-        public string productCode;
-        public string gameOrderId;
+        public string productCode; // Corresponds to storeSpecificId
+        public string gameOrderId; // Corresponds to transactionId
         public string orderQueryToken;
     }
 
@@ -341,7 +361,7 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		m_IsCloudMoolahStoreSelected = Application.platform == RuntimePlatform.Android && module.androidStore == AndroidStore.CloudMoolah;
 
 		// UnityChannel, provides access to Xiaomi MiPay.
-	    // Products are required to be set in the IAP Catalog window.  The file "MiProductCatalog.prop"
+	    // Products are required to be set in the IAP Catalog window.  The file "MiGameProductCatalog.prop"
 	    // is required to be generated into the project's
 	    // Assets/Plugins/Android/assets folder, based off the contents of the
 	    // IAP Catalog window, for MiPay.
@@ -349,10 +369,9 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		// UnityChannel supports receipt validation through a backend fetch.
 		builder.Configure<IUnityChannelConfiguration>().fetchReceiptPayloadOnPurchase = m_FetchReceiptPayloadOnPurchase;
 
-	    // Define our products.
-	    // Either use the Unity IAP Catalog, or manually use the ConfigurationBuilder.AddProduct API.
+	    // Define our products by passing in their identifiers.
+	    // Use IDs from both the Unity IAP Catalog and hardcoded IDs via the ConfigurationBuilder.AddProduct API.
 
-	    #if USE_IAP_CATALOG
 	    // Use the products defined in the IAP Catalog GUI.
 	    // E.g. Menu: "Window" > "Unity IAP" > "IAP Catalog", then add products, then click "App Store Export".
 	    var catalog = ProductCatalog.LoadDefaultCatalog();
@@ -368,13 +387,13 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 	            builder.AddProduct(product.id, product.type);
 	        }
 	    }
-	    #else
-		// In this case our products have the same identifier across all the App stores,
+
+		// Our products have the same identifier across all the App stores,
 		// except on the Mac App store where product IDs cannot be reused across both Mac and
 		// iOS stores.
 		// So on the Mac App store our products have different identifiers,
 		// and we tell Unity IAP this by using the IDs class.
-		builder.AddProduct("100.gold.coins", ProductType.Consumable, new IDs
+		/*builder.AddProduct("100.gold.coins", ProductType.Consumable, new IDs
 		{
 			{"100.gold.coins.mac", MacAppStore.Name},
 			{"000000596586", TizenStore.Name},
@@ -397,8 +416,7 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		builder.AddProduct("subscription", ProductType.Subscription, new IDs
 		{
 			{"subscription.mac", MacAppStore.Name}
-		});
-	    #endif
+		});*/
 
 		// Write Amazon's JSON description of our products to storage when using Amazon's local sandbox.
 		// This should be removed from a production build.
@@ -738,14 +756,15 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		var itemText = "Item\n\n";
 		var countText = "Purchased\n\n";
 
-		for (int t = 0; t < m_Controller.products.all.Length; t++)
-		{
-			var item = m_Controller.products.all [t];
-
+		foreach (var item in m_Controller.products.all) {
 			// Collect history status report
-
 			itemText += "\n\n" + item.definition.id;
-			countText += "\n\n" + item.hasReceipt.ToString();
+			countText += "\n\n";
+#if DELAY_CONFIRMATION
+			if (m_PendingProducts.Contains(item.definition.id))
+				countText += "(Pending) ";
+#endif
+			countText += item.hasReceipt.ToString();
 		}
 
 		// Show history
