@@ -190,9 +190,9 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		// You should unlock the content here.
 #if USE_PAYOUTS
 		if (e.purchasedProduct.definition.payouts != null) {
-            Debug.Log("PAYOUT: Purchase complete, paying out based on defined payouts");
+            Debug.Log("----------PAYOUT---------- : Purchase complete, paying out based on defined payouts");
             foreach (var payout in e.purchasedProduct.definition.payouts) {
-                Debug.Log(string.Format("Granting {0} {1} {2} {3}", payout.quantity, payout.typeString, payout.subtype, payout.data));
+                Debug.Log(string.Format("---------PAYOUT---------- : Granting {0} {1} {2} {3}", payout.quantity, payout.typeString, payout.subtype, payout.data));
             }
         }
 #endif
@@ -311,12 +311,13 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.az", AmazonApps.Name},
 				{"000000596581", TizenStore.Name},
 			    {"com.ee", MoolahAppStore.Name},
-			    {"webgl.iapdemo.coins", FacebookStore.Name}
+			    {"webgl.iapdemo.coins", FacebookStore.Name},
+			}
 			    
 			    #if USE_PAYOUTS
 				, new PayoutDefinition(PayoutType.Currency, "gold", 100)
 				#endif
-			});
+			);
 
 		builder.AddProduct("sword", ProductType.NonConsumable, new IDs
 			{
@@ -327,7 +328,8 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 				{"sword", SamsungApps.Name},
 				{"com.unity3d.unityiap.unityiapdemo.sword.az", AmazonApps.Name},
 				{"000000596583", TizenStore.Name},
-				{"webgl.iapdemo.sword", FacebookStore.Name}
+				{"webgl.iapdemo.sword", FacebookStore.Name},
+			}
 				
 				#if USE_PAYOUTS
 				, new List<PayoutDefinition> {
@@ -335,7 +337,7 @@ public class IAPAuto : MonoBehaviour, IStoreListener
             		new PayoutDefinition(PayoutType.Currency, "gold", 50)
         		}
 				#endif
-			});
+			);
 
 		builder.AddProduct("non_subscription", ProductType.Subscription, new IDs
 			{
