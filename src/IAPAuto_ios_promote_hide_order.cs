@@ -112,21 +112,19 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 		
 		LogProductDefinitions();
 		
-		
-		Debug.Log("-------------- Start setting product visibility and order --------------");
-		
+				
 		//Set product visibility
-		m_AppleExtensions.SetStorePromotionVisibility("com.unity3d.unityiap.unityiapdemo.subscription.non.8", AppleStorePromotionVisibility.Hide).
+		Debug.Log("-------------- Set product visibility : " + m_Controller.products.all[2].metadata.localizedTitle + "--------------");
+		m_AppleExtensions.SetStorePromotionVisibility(m_Controller.products.all[2], AppleStorePromotionVisibility.Hide);
 		
 		//Set products order
+		Debug.Log("-------------- Set products order : " + m_Controller.products.all[0].metadata.localizedTitle + "--------------");
+		Debug.Log("-------------- Set products order : " + m_Controller.products.all[1].metadata.localizedTitle + "--------------");
 		m_AppleExtensions.SetStorePromotionOrder(new List<Product>
 		{
-        "com.unity3d.unityiap.unityiapdemo.100goldcoins.8",
-        "com.unity3d.unityiap.unityiapdemo.sword.8"
-        });	
-        
-        Debug.Log("-------------- End setting product visibility and order --------------");
-		
+        m_Controller.products.all[0],
+        m_Controller.products.all[1]
+        });			
 	}
 
 	/// <summary>
