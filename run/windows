@@ -28,7 +28,7 @@ git clean -fdx . > /dev/null
 echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
 echo
-if [ $1 == "-i" ]
+if [ $1 == "i" ]
 then
    "${UNITY_HOME}"/Unity -projectPath "${PROJECT_PATH}" -importPackage "${PKG_PATH}" -logFile "${AUTO_HOME}"/import.log
 else
@@ -41,7 +41,7 @@ cp "${AUTO_HOME}"/src/AutoBuilder.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurch
 echo "(3) ---------- Building unity"
 echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformWindowsUniversalBuild -logFile ${AUTO_HOME}/build.log
 echo
-if [ $1 == "-i" ]
+if [ $1 == "i" ]
 then
    "${UNITY_HOME}"/Unity -projectPath "${PROJECT_PATH}" -executeMethod AutoBuilder.PerformWindowsUniversalBuild -logFile ${AUTO_HOME}/build.log
 else
