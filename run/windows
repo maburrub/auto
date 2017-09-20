@@ -2,8 +2,16 @@
 
 clear
 
+# Set unity version
+if [ $2 != "" ]
+then
+   UNITY_VERSION=$2
+else
+   UNITY_VERSION=Unity2017.1.0f3
+fi
+
 # Define some variables
-UNITY_HOME="/c/Program Files/Unity/Editor"
+UNITY_HOME="/c/Program Files/${UNITY_VERSION}/Editor"
 AUTO_HOME="/c/Users/mohammed/Documents/auto"
 PROJECT_PATH="/c/Users/mohammed/Documents/auto/iap"
 PKG_PATH="/c/Users/mohammed/Documents/auto/pkg/iap.unitypackage"
@@ -20,11 +28,12 @@ git clean -fdx . > /dev/null
 echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
 echo
-if ($1 == "-i") then 
+if [ $1 == "-i" ]
+then
    "${UNITY_HOME}"/Unity -projectPath "${PROJECT_PATH}" -importPackage "${PKG_PATH}" -logFile "${AUTO_HOME}"/import.log
-else 
+else
    "${UNITY_HOME}"/Unity -batchMode -projectPath "${PROJECT_PATH}" -importPackage "${PKG_PATH}" -logFile "${AUTO_HOME}"/import.log
-endif
+fi
 cp "${AUTO_HOME}"/src/IAPAuto_win.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurchasing/script/IAPAuto.cs
 cp "${AUTO_HOME}"/src/AutoBuilder.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurchasing/Editor
 
@@ -32,11 +41,12 @@ cp "${AUTO_HOME}"/src/AutoBuilder.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurch
 echo "(3) ---------- Building unity"
 echo ${UNITY_HOME}/Unity -batchMode -quit -projectPath ${PROJECT_PATH} -executeMethod AutoBuilder.PerformWindowsUniversalBuild -logFile ${AUTO_HOME}/build.log
 echo
-if ($1 == "-i") then 
+if [ $1 == "-i" ]
+then
    "${UNITY_HOME}"/Unity -projectPath "${PROJECT_PATH}" -executeMethod AutoBuilder.PerformWindowsUniversalBuild -logFile ${AUTO_HOME}/build.log
-else 
+else
    "${UNITY_HOME}"/Unity -batchMode -quit -projectPath "${PROJECT_PATH}" -executeMethod AutoBuilder.PerformWindowsUniversalBuild -logFile ${AUTO_HOME}/build.log
-endif
+fi
 
 # Build VS project
 # cp cPackage.appxmanifest "${PROJECT_PATH}"/Builds/WindowsUniversal/IAPAuto
