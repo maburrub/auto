@@ -23,7 +23,7 @@ echo "(2) ---------- Importing IAP package"
 echo ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
 echo
 ${UNITY_HOME}/Unity -batchMode -projectPath ${PROJECT_PATH} -importPackage ${PKG_PATH} -logFile ${AUTO_HOME}/import.log
-cp ${AUTO_HOME}/src/IAPAuto.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script
+cp ${AUTO_HOME}/src/IAPAuto_cloud_moolah.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/script/IAPAuto.cs
 cp ${AUTO_HOME}/src/BillingMode_cloud_moolah.json ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Resources/BillingMode.json
 cp ${AUTO_HOME}/src/AutoBuilder.cs ${PROJECT_PATH}/Assets/Plugins/UnityPurchasing/Editor
 
