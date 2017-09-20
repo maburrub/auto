@@ -48,9 +48,9 @@ endif
 
 # Launch application
 echo "(4) ---------- Launching IAPAuto"
-echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap_mac.app $1
+echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap_mac.app
 echo
-open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap_mac.app $1
+open -a ${PROJECT_PATH}/Builds/OSX-Universal/iap_mac.app
 
 # Quit application
 sleep 5
