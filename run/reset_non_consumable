@@ -71,5 +71,7 @@ sleep 15
 echo "(7) ---------- Closing IAPAuto"
 echo adb shell pm clear ${BUNDLE_ID}
 echo
-adb shell pm clear ${BUNDLE_ID}
+if ($3 != "") then
+   adb shell pm clear ${BUNDLE_ID} 
+endif
 

@@ -57,5 +57,8 @@ sleep 5
 echo "(5) ---------- Closing IAPAuto"
 echo osascript -e 'quit app "IAPAuto"'
 echo
-osascript -e 'quit app "IAPAuto"'
+if ($3 != "") then
+   osascript -e 'quit app "IAPAuto"'
+endif
+
 
