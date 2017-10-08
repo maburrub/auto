@@ -7,13 +7,13 @@ if [ $2 != "" ]
 then
    UNITY_VERSION=$2
 else
-   UNITY_VERSION=Unity2017.1.0f3
+   UNITY_VERSION=Unity201710f3
 fi
 
 # Define some variables
 UNITY_HOME="/c/Program Files/${UNITY_VERSION}/Editor"
 AUTO_HOME="/c/Users/mohammed/Documents/auto"
-PROJECT_PATH="/c/Users/mohammed/Documents/auto/iap"
+PROJECT_PATH="/c/Users/mohammed/Documents/auto/iap/${UNITY_VERSION}"
 PKG_PATH="/c/Users/mohammed/Documents/auto/pkg/iap.unitypackage"
 
 # Clean unity project

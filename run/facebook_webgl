@@ -6,13 +6,13 @@ clear
 if ($2 != "") then 
    setenv UNITY_VERSION $2
 else
-   setenv UNITY_VERSION Unity2017.1.0f3
+   setenv UNITY_VERSION Unity201710f3
 endif
 
 # Define some variables
 setenv UNITY_HOME /Applications/${UNITY_VERSION}/Unity.app/Contents/MacOS
 setenv AUTO_HOME /Users/mohammed/Projects/auto
-setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap
+setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap/${UNITY_VERSION}
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage
 
 # Clean unity project
