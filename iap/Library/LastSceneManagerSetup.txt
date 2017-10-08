@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Plugins/UnityPurchasing/scenes/IAPAuto.unity
-  isLoaded: 1
-  isActive: 1
