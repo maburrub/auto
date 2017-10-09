@@ -3,7 +3,7 @@
 clear
 
 # Set unity version
-if [ $2 != "" ]
+if [ "$2" != "" ]
 then
    UNITY_VERSION=$2
 else
