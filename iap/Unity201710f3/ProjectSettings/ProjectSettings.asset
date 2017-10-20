@@ -626,14 +626,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Unity2017.1.0f3
-  metroPackageVersion: 
-  metroCertificatePath: 
+  metroPackageName: 60072MohammedAbualrob.AmorCam
+  metroPackageVersion: 1.0.0.0
+  metroCertificatePath: Assets/IAPAuto_StoreKey.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Unity2017.1.0f3
+  metroCertificateSubject: 25E85CC7-4E72-4B40-BA9A-E818A9557E7D
+  metroCertificateIssuer: 25E85CC7-4E72-4B40-BA9A-E818A9557E7D
+  metroCertificateNotAfter: 0019a4602668d401
+  metroApplicationDescription: IAPAuto
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -647,7 +647,33 @@ PlayerSettings:
   metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628,
     a: 1}
   metroSplashScreenUseBackgroundColor: 0
-  platformCapabilities: {}
+  platformCapabilities:
+    WindowsStoreApps:
+      AllJoyn: False
+      BlockedChatMessages: False
+      Bluetooth: False
+      Chat: False
+      CodeGeneration: False
+      EnterpriseAuthentication: False
+      HumanInterfaceDevice: False
+      InputInjectionBrokered: False
+      InternetClient: False
+      InternetClientServer: False
+      Location: False
+      Microphone: False
+      MusicLibrary: False
+      Objects3D: False
+      PhoneCall: False
+      PicturesLibrary: False
+      PrivateNetworkClientServer: False
+      Proximity: False
+      RemovableStorage: False
+      SharedUserCertificates: False
+      SpatialPerception: False
+      UserAccountInformation: False
+      VideosLibrary: False
+      VoipCall: False
+      WebCam: False
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 

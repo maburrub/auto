@@ -21,8 +21,8 @@ echo "(1) ---------- Cleaning up"
 echo ${PROJECT_PATH}
 echo
 cd "${PROJECT_PATH}"
-git checkout . > /dev/null
-git clean -fdx . > /dev/null
+#git checkout . > /dev/null
+#git clean -fdx . > /dev/null
 
 # Import IAP package
 echo "(2) ---------- Importing IAP package"
