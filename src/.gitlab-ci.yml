@@ -1,0 +1,56 @@
+stages:
+  - clean
+  - test
+  - build
+  - export
+  - mac
+
+Clean Repo:
+  script:
+    - cp /Users/mohammed/Projects/auto/src/BuildConfig.json $CI_PROJECT_DIR
+    - cp /Users/mohammed/Projects/auto/src/buildplugin.pl $CI_PROJECT_DIR/tizen
+    - ./gradlew clean
+  stage: clean
+  only:
+    - master
+
+Run Tests:
+  variables:
+    GIT_STRATEGY: none
+
+  script:
+    - ./gradlew test
+  stage: test
+  only:
+    - master
+
+Build Project:
+  variables:
+    GIT_STRATEGY: none
+
+  script:
+    - ./gradlew build
+  stage: build
+  only:
+    - master
+
+Export Plugin:
+  variables:
+    GIT_STRATEGY: none
+
+  script:
+    - ./gradlew exportPackage
+  stage: export
+  only:
+    - master
+
+Mac Player:
+  variables:
+    GIT_STRATEGY: none
+
+  script:
+    - cp $CI_PROJECT_DIR/build/UnityEngine.Cloud.Purchasing.unitypackage /Users/mohammed/Projects/auto/pkg/iap.unitypackage
+    - /Users/mohammed/Projects/auto/run/mac c
+  stage: mac
+  only:
+    - master
