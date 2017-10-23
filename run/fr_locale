@@ -12,7 +12,13 @@ endif
 # Define some variables
 setenv UNITY_HOME /Applications/${UNITY_VERSION}/Unity.app/Contents/MacOS
 setenv AUTO_HOME /Users/mohammed/Projects/auto
-setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap/${UNITY_VERSION}
+
+if ("${UNITY_VERSION}" == "Unity553p2") then 
+   setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap/${UNITY_VERSION}/google
+else 
+   setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap/${UNITY_VERSION}
+endif
+
 setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage
 setenv BUNDLE_ID com.eight.bit.avenue.amorcam
 setenv ACTIVITY com.unity3d.player.UnityPlayerActivity
