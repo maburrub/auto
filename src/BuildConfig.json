@@ -1,0 +1,15 @@
+{
+    "bundle_ids" : {
+        "GooglePlay" : "com.outlinegames.unibill.c",
+        "AmazonAppStore" : "com.outlinegames.unibill.c",
+        "AppStore" : "com.outlinegames.unibill",
+        "MacAppStore" : "com.outlinegames.unibill.osx.2",
+        "SamsungApps" : "com.outlinegames.unibill"
+    },
+    "unityEditor" : "/Applications/Unity201710f3/Unity.app/Contents/MacOS/Unity",
+    "managedToolRunner" : "/Applications/Visual Studio.app/Contents/MacOS/vstool",
+    "keystorePass" : "bonnie",
+    "keyaliasName" : "release",
+    "keyaliasPass" : "bonnie",
+    "iPhoneDeviceID" : "6a7bde59d896c2a2041b6456e4e88b887467351a"
+}
