@@ -1,0 +1,8 @@
+#!/bin/tcsh
+
+clear
+
+setenv AUTO_HOME /Users/mohammed/Projects/auto
+
+go run $AUTO_HOME/run/gitlab-mr.go --url http://gitlab.example.com:30080 --private_token -zhxZiAZWMm8y8bmLDwP 
+
