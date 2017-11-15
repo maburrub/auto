@@ -386,21 +386,21 @@ public class IAPAuto : MonoBehaviour, IStoreListener
         // and we tell Unity IAP this by using the IDs class.
         builder.AddProduct("100.gold.coins", ProductType.Consumable, new IDs
         {
-				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.6", AppleAppStore.Name},
+				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.8", AppleAppStore.Name},
 				{"com.eight.bit.avenue.amorcam.100coins.3", GooglePlay.Name},
 				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name}
         });
 			
         builder.AddProduct("sword", ProductType.NonConsumable, new IDs
         {
-				{"com.unity3d.unityiap.unityiapdemo.sword.6", AppleAppStore.Name},
+				{"com.unity3d.unityiap.unityiapdemo.sword.8", AppleAppStore.Name},
 				{"com.eight.bit.avenue.amorcam.sword.3", GooglePlay.Name},
 				{"com.unity3d.unityiap.unityiapdemo.sword.7", MacAppStore.Name}
         });
 
         builder.AddProduct("subscription", ProductType.Subscription, new IDs
         {
-				{"com.unity3d.unityiap.unityiapdemo.subscription.6", AppleAppStore.Name},
+				{"com.unity3d.unityiap.unityiapdemo.subscription.non.8", AppleAppStore.Name},
 				{"com.eight.bit.avenue.amorcam.subscription.3", GooglePlay.Name},
 				{"com.unity3d.unityiap.unityiapdemo.subscription.7", MacAppStore.Name}
         });
