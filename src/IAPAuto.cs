@@ -325,7 +325,7 @@ public class IAPAuto : MonoBehaviour, IStoreListener
 
         // This enables the Microsoft IAP simulator for local testing.
         // You would remove this before building your release package.
-        builder.Configure<IMicrosoftConfiguration>().useMockBillingSystem = true;
+        builder.Configure<IMicrosoftConfiguration>().useMockBillingSystem = false;
         m_IsGooglePlayStoreSelected =
             Application.platform == RuntimePlatform.Android && module.appStore == AppStore.GooglePlay;
 
@@ -388,21 +388,24 @@ public class IAPAuto : MonoBehaviour, IStoreListener
         {
 				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.8", AppleAppStore.Name},
 				{"com.eight.bit.avenue.amorcam.100coins.3", GooglePlay.Name},
-				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name}
+				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name},
+				{"com.eight.bit.avenue.100coins.1", WindowsStore.Name}
         });
 			
         builder.AddProduct("sword", ProductType.NonConsumable, new IDs
         {
 				{"com.unity3d.unityiap.unityiapdemo.sword.8", AppleAppStore.Name},
 				{"com.eight.bit.avenue.amorcam.sword.3", GooglePlay.Name},
-				{"com.unity3d.unityiap.unityiapdemo.sword.7", MacAppStore.Name}
+				{"com.unity3d.unityiap.unityiapdemo.sword.7", MacAppStore.Name},
+				{"com.eight.bit.avenue.sword.1", WindowsStore.Name}
         });
 
         builder.AddProduct("subscription", ProductType.Subscription, new IDs
         {
 				{"com.unity3d.unityiap.unityiapdemo.subscription.non.8", AppleAppStore.Name},
 				{"com.eight.bit.avenue.amorcam.subscription.3", GooglePlay.Name},
-				{"com.unity3d.unityiap.unityiapdemo.subscription.7", MacAppStore.Name}
+				{"com.unity3d.unityiap.unityiapdemo.subscription.7", MacAppStore.Name},
+				{"com.eight.bit.avenue.subscription.1", WindowsStore.Name}
         });
 
         // Write Amazon's JSON description of our products to storage when using Amazon's local sandbox.
