@@ -4,14 +4,14 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  productGUID: bc99af506fff24ae09b7832500a273b5
+  productGUID: 94772b2bbecb5445db95ae570f42e0e2
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Unity
-  productName: IAPAuto
+  productName: IAPDemo
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -212,7 +212,7 @@ PlayerSettings:
   metalEditorSupport: 0
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
-  appleDeveloperTeamID: A6X2U74XB2
+  appleDeveloperTeamID: 
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
   appleEnableAutomaticSigning: 0
@@ -227,128 +227,10 @@ PlayerSettings:
   m_AndroidBanners:
   - width: 320
     height: 180
-    banner: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
+    banner: {fileID: 0}
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons:
-  - m_BuildTarget: Android
-    m_Icons:
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 192
-      m_Height: 192
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 144
-      m_Height: 144
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 96
-      m_Height: 96
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 72
-      m_Height: 72
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 48
-      m_Height: 48
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 36
-      m_Height: 36
-  - m_BuildTarget: iPhone
-    m_Icons:
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 180
-      m_Height: 180
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 167
-      m_Height: 167
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 152
-      m_Height: 152
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 144
-      m_Height: 144
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 120
-      m_Height: 120
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 114
-      m_Height: 114
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 76
-      m_Height: 76
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 72
-      m_Height: 72
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 57
-      m_Height: 57
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 120
-      m_Height: 120
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 80
-      m_Height: 80
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 40
-      m_Height: 40
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 87
-      m_Height: 87
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 58
-      m_Height: 58
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 29
-      m_Height: 29
-  - m_BuildTarget: Standalone
-    m_Icons:
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 1024
-      m_Height: 1024
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 512
-      m_Height: 512
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 256
-      m_Height: 256
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 128
-      m_Height: 128
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 48
-      m_Height: 48
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 32
-      m_Height: 32
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d80585c2be04e45229a6abc0ad37d5d5, type: 3}
-      m_Width: 16
-      m_Height: 16
+  m_BuildTargetIcons: []
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []
@@ -525,7 +407,7 @@ PlayerSettings:
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
-  ps4Passcode: 5ZuGXbEWRK5RhRXdCdG5nG5azdNMK66M
+  ps4Passcode: ZuGXbEWRK5RhRXdCdG5nG5azdNMK66Mu
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -571,7 +453,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: uCV6GXi5xr84P2R391UXaLHbavJvFZGf
+  psp2PackagePassword: CV6GXi5xr84P2R391UXaLHbavJvFZGfO
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -626,14 +508,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: 60072MohammedAbualrob.AmorCam
-  metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets/IAPAuto_StoreKey.pfx
+  metroPackageName: Unity201710f3
+  metroPackageVersion: 
+  metroCertificatePath: 
   metroCertificatePassword: 
-  metroCertificateSubject: 25E85CC7-4E72-4B40-BA9A-E818A9557E7D
-  metroCertificateIssuer: 25E85CC7-4E72-4B40-BA9A-E818A9557E7D
-  metroCertificateNotAfter: 0019a4602668d401
-  metroApplicationDescription: IAPAuto
+  metroCertificateSubject: 
+  metroCertificateIssuer: 
+  metroCertificateNotAfter: 0000000000000000
+  metroApplicationDescription: Unity201710f3
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -647,33 +529,7 @@ PlayerSettings:
   metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628,
     a: 1}
   metroSplashScreenUseBackgroundColor: 0
-  platformCapabilities:
-    WindowsStoreApps:
-      AllJoyn: False
-      BlockedChatMessages: False
-      Bluetooth: False
-      Chat: False
-      CodeGeneration: False
-      EnterpriseAuthentication: False
-      HumanInterfaceDevice: False
-      InputInjectionBrokered: False
-      InternetClient: False
-      InternetClientServer: False
-      Location: False
-      Microphone: False
-      MusicLibrary: False
-      Objects3D: False
-      PhoneCall: False
-      PicturesLibrary: False
-      PrivateNetworkClientServer: False
-      Proximity: False
-      RemovableStorage: False
-      SharedUserCertificates: False
-      SpatialPerception: False
-      UserAccountInformation: False
-      VideosLibrary: False
-      VoipCall: False
-      WebCam: False
+  platformCapabilities: {}
   metroFTAName: 
   metroFTAFileTypes: []
   metroProtocolName: 
