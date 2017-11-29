@@ -95,29 +95,29 @@
  <Reference Include="UnityStore">
  <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityChannel/UnityStore.dll</HintPath>
  </Reference>
+ <Reference Include="Editor">
+ <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Purchasing.Common">
+ <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Purchasing.Common.dll</HintPath>
+ </Reference>
+ <Reference Include="Stores">
+ <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
+ </Reference>
+ <Reference Include="Apple">
+ <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
+ </Reference>
  <Reference Include="FacebookStore">
  <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Facebook/FacebookStore.dll</HintPath>
  </Reference>
  <Reference Include="Security">
  <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Security/live/Security.dll</HintPath>
  </Reference>
- <Reference Include="Purchasing.Common">
- <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Purchasing.Common.dll</HintPath>
- </Reference>
- <Reference Include="Apple">
- <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
- </Reference>
- <Reference Include="Stores">
- <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
- </Reference>
  <Reference Include="Tizen">
  <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Tizen/Tizen.dll</HintPath>
  </Reference>
  <Reference Include="winrt">
  <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
- </Reference>
- <Reference Include="Editor">
- <HintPath>/Users/mohammed/Projects/auto/iap/Unity201710f3/Assets/Plugins/UnityPurchasing/Bin/Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
