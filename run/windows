@@ -34,7 +34,7 @@ then
 else
    "${UNITY_HOME}"/Unity -batchMode -projectPath "${PROJECT_PATH}" -importPackage "${PKG_PATH}" -logFile "${AUTO_HOME}"/import.log
 fi
-cp "${AUTO_HOME}"/src/IAPAuto.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurchasing/script
+cp "${AUTO_HOME}"/src/IAPDemo.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurchasing/script
 cp "${AUTO_HOME}"/src/AutoBuilder.cs "${PROJECT_PATH}"/Assets/Plugins/UnityPurchasing/Editor
 
 # Build unity project
