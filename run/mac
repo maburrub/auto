@@ -6,7 +6,7 @@ clear
 if ($2 != "") then 
    setenv UNITY_VERSION $2
 else
-   setenv UNITY_VERSION Unity201710f3
+   setenv UNITY_VERSION Unity201710p5
 endif
 
 # Define some variables
