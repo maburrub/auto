@@ -3,7 +3,7 @@
 #if UNITY_ANDROID || UNITY_IPHONE || UNITY_STANDALONE_OSX || UNITY_TVOS
 // You must obfuscate your secrets using Window > Unity IAP > Receipt Validation Obfuscator
 // before receipt validation will compile in this sample.
-//#define RECEIPT_VALIDATION
+#define RECEIPT_VALIDATION
 #endif
 
 //#define DELAY_CONFIRMATION // Returns PurchaseProcessingResult.Pending from ProcessPurchase, then calls ConfirmPendingPurchase after a delay
@@ -141,31 +141,31 @@ public class IAPDemo : MonoBehaviour, IStoreListener
             Application.platform == RuntimePlatform.tvOS) {
             try {
                 var result = validator.Validate(e.purchasedProduct.receipt);
-                Debug.Log("Receipt is valid. Contents:");
+                Debug.Log("-------------- Receipt is valid. Contents:");
                 foreach (IPurchaseReceipt productReceipt in result) {
-                    Debug.Log(productReceipt.productID);
-                    Debug.Log(productReceipt.purchaseDate);
-                    Debug.Log(productReceipt.transactionID);
+                    Debug.Log("-------------- productReceipt.productID = " + productReceipt.productID);
+                    Debug.Log("-------------- productReceipt.purchaseDate = " + productReceipt.purchaseDate);
+                    Debug.Log("-------------- productReceipt.transactionID = " + productReceipt.transactionID);
 
                     GooglePlayReceipt google = productReceipt as GooglePlayReceipt;
                     if (null != google) {
-                        Debug.Log(google.purchaseState);
-                        Debug.Log(google.purchaseToken);
+                        Debug.Log("-------------- google.purchaseState = " + google.purchaseState);
+                        Debug.Log("-------------- google.purchaseToken = " + google.purchaseToken);
                     }
 
                     UnityChannelReceipt unityChannel = productReceipt as UnityChannelReceipt;
                     if (null != unityChannel) {
-                        Debug.Log(unityChannel.productID);
-                        Debug.Log(unityChannel.purchaseDate);
-                        Debug.Log(unityChannel.transactionID);
+                        Debug.Log("-------------- unityChannel.productID = " + unityChannel.productID);
+                        Debug.Log("-------------- unityChannel.purchaseDate = " + unityChannel.purchaseDate);
+                        Debug.Log("-------------- unityChannel.transactionID = " + unityChannel.transactionID);
                     }
 
                     AppleInAppPurchaseReceipt apple = productReceipt as AppleInAppPurchaseReceipt;
                     if (null != apple) {
-                        Debug.Log(apple.originalTransactionIdentifier);
-                        Debug.Log(apple.subscriptionExpirationDate);
-                        Debug.Log(apple.cancellationDate);
-                        Debug.Log(apple.quantity);
+                        Debug.Log("-------------- apple.originalTransactionIdentifier = " + apple.originalTransactionIdentifier);
+                        Debug.Log("-------------- apple.subscriptionExpirationDate = " + apple.subscriptionExpirationDate);
+                        Debug.Log("-------------- apple.cancellationDate = " + apple.cancellationDate);
+                        Debug.Log("-------------- apple.quantity = " + apple.quantity);
                     }
 
                     // For improved security, consider comparing the signed
@@ -174,7 +174,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
                     // to make this purchase.
                 }
             } catch (IAPSecurityException ex) {
-                Debug.Log("Invalid receipt, not unlocking content. " + ex);
+                Debug.Log("-------------- Invalid receipt, not unlocking content. " + ex);
                 return PurchaseProcessingResult.Complete;
             }
         }
@@ -325,7 +325,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 
         // This enables the Microsoft IAP simulator for local testing.
         // You would remove this before building your release package.
-        builder.Configure<IMicrosoftConfiguration>().useMockBillingSystem = true;
+        builder.Configure<IMicrosoftConfiguration>().useMockBillingSystem = false;
         m_IsGooglePlayStoreSelected =
             Application.platform == RuntimePlatform.Android && module.appStore == AppStore.GooglePlay;
 
@@ -337,7 +337,7 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         builder.Configure<IMoolahConfiguration>().hashKey = "cc";
         // This enables the CloudMoolah test mode for local testing.
         // You would remove this, or set to CloudMoolahMode.Production, before building your release package.
-        builder.Configure<IMoolahConfiguration>().SetMode(CloudMoolahMode.AlwaysSucceed);
+        //builder.Configure<IMoolahConfiguration>().SetMode(CloudMoolahMode.AlwaysSucceed);
         // This records whether we are using Cloud Moolah IAP.
         // Cloud Moolah requires logging in to access your Digital Wallet, so:
         // A) IAPDemo (this) displays the Cloud Moolah GUI button for Cloud Moolah
@@ -385,43 +385,27 @@ public class IAPDemo : MonoBehaviour, IStoreListener
         // So on the Mac App store our products have different identifiers,
         // and we tell Unity IAP this by using the IDs class.
         builder.AddProduct("100.gold.coins", ProductType.Consumable, new IDs
-            {
-                {"100.gold.coins.mac", MacAppStore.Name},
-                {"000000596586", TizenStore.Name},
-                {"com.ff", MoolahAppStore.Name},
-            }
-#if USE_PAYOUTS
-        , new PayoutDefinition(PayoutType.Currency, "gold", 100)
-#endif //USE_PAYOUTS
-        );
-
-        builder.AddProduct("500.gold.coins", ProductType.Consumable, new IDs
-            {
-                {"500.gold.coins.mac", MacAppStore.Name},
-                {"000000596581", TizenStore.Name},
-                {"com.ee", MoolahAppStore.Name},
-            }
-#if USE_PAYOUTS
-        , new PayoutDefinition(PayoutType.Currency, "gold", 500)
-#endif //USE_PAYOUTS
-        );
-
+        {
+				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.8", AppleAppStore.Name},
+				{"com.eight.bit.avenue.amorcam.100coins.3", GooglePlay.Name},
+				{"com.unity3d.unityiap.unityiapdemo.100goldcoins.7", MacAppStore.Name},
+				{"com.eight.bit.avenue.100coins.1", WindowsStore.Name}
+        });
+			
         builder.AddProduct("sword", ProductType.NonConsumable, new IDs
-            {
-                {"sword.mac", MacAppStore.Name},
-                {"000000596583", TizenStore.Name},
-            }
-#if USE_PAYOUTS
-        , new List<PayoutDefinition> {
-            new PayoutDefinition(PayoutType.Item, "", 1, "item_id:76543"),
-            new PayoutDefinition(PayoutType.Currency, "gold", 50)
-        }
-#endif //USE_PAYOUTS
-        );
+        {
+				{"com.unity3d.unityiap.unityiapdemo.sword.8", AppleAppStore.Name},
+				{"com.eight.bit.avenue.amorcam.sword.3", GooglePlay.Name},
+				{"com.unity3d.unityiap.unityiapdemo.sword.7", MacAppStore.Name},
+				{"com.eight.bit.avenue.sword.1", WindowsStore.Name}
+        });
 
         builder.AddProduct("subscription", ProductType.Subscription, new IDs
         {
-            {"subscription.mac", MacAppStore.Name}
+				{"com.unity3d.unityiap.unityiapdemo.subscription.non.8", AppleAppStore.Name},
+				{"com.eight.bit.avenue.amorcam.subscription.3", GooglePlay.Name},
+				{"com.unity3d.unityiap.unityiapdemo.subscription.7", MacAppStore.Name},
+				{"com.eight.bit.avenue.subscription.1", WindowsStore.Name}
         });
 
         // Write Amazon's JSON description of our products to storage when using Amazon's local sandbox.
