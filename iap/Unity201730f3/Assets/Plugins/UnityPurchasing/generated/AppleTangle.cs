@@ -2,13 +2,17 @@
 // WARNING: Do not modify! Generated file.
 
 namespace UnityEngine.Purchasing.Security {
-    class AppleTangle
+    public class AppleTangle
     {
-        private static byte[] data = System.Convert.FromBase64String("53bYMZ26yw/ZOmeDrK2vrq8NLK/8y8LHz8DNy47BwI7axsfdjs3L3NnZgM/e3sLLgM3Bw4HP3t7Cy83PsT91sOn+RatD8Ncqg0WYDPni+0IQWt01QHzKoWXX4Zp2DJBX1lHFZqOop4Qo5ihZo6+vq6uurSyvr67yLK+uqKeEKOYoWc3Kq6+eL1yehKgFDd886f37bwGB7x1WVU3eY0gN4p6/qK37qqS9pO/e3sLLjufAzYCfgo7Ny9zax8jHzc/ay47ewcLHzdfCy47nwM2An4ieiqit+6qlvbPv3trGwdzH2tefuJ66qK37qq29o+/enZj0nsyfpZ6nqK37qqi9rPv9n72OwciO2sbLjtrGy8COz97ewsfNz6ieoait+7O9r69Rqquera+vUZ6zhCjmKFmjr6+rq66ezJ+lnqeorfu4nrqorfuqrb2j797ewsuO/MHB2m7NndlZlKmC+EV0oY+gdBTdt+EbypuNu+W797MdOllYMjBh/hRv9v7Ayo7NwcDKx9rHwcDdjsHIjtvdy7ErLSu1N5PpmVwHNe4ggnofPrx21J4sr9ieoKit+7Ohr69RqqqtrK8uuoV+x+k62KdQWsUjgO4IWenj0YDuCFnp49Gm8J6xqK37s42qtp6469Cx4sX+OO8natrMpb4t7ymdJC/Xjs/d3dvDy92Oz83Ny97az8DNy9rHyMfNz9rLjszXjs/A147ez9zax8jHzc/ax8HAju/b2sbB3Mfa15+m8J4sr7+orfuzjqosr6aeLK+qnopMRX8Z3nGh60+JZF/D1kNJG7m5d5jRbyn7dwk3F5zsVXZ73zDQD/w7MNSiCukl9Xq4mZ1laqHjYLrHf/cJq6fSue74v7DafRkljZXpDXvBH572QvSqnCLGHSGzcMvdUcnwyxKbnJ+anp2Y9LmjnZuenJ6XnJ+antzPzdrHzcuO3drP2svDy8Da3YCeq66tLK+hrp4sr6SsLK+vrko/B6eeLKoVniytDQ6trK+srK+snqOop6qovaz7/Z+9nr+orfuqpL2k797ek4jJjiSdxFmjLGFwRQ2BV/3E9crMwsuO3drPwMrP3MqO2svcw92OzyW3J3BX5cJbqQWMnqxGtpBW/qd9Id0vzmi19aeBPBxW6uZezpYwu1upQtOXLSX9jn2Wah8RNOGkxVGFUskhphqOWWUCgo7B3hiRr54iGe1hgZ4vbaimhaivq6uprKyeLxi0Lx2YN+KD1hlDIjVyXdk1XNh82Z7hb6aFqK+rq6msr7iwxtra3t2UgYHZGbUTPeyKvIRpobMY4zLwzWblLrmInoqorfuqpb2z797ewsuO7cvc2gZy0IybZIt7d6F4xXoMio2/WQ8Cju3vniyvjJ6jqKeEKOYoWaOvr6+hM5NdheeGtGZQYBsXoHfwsnhlkxuUA1qhoK48pR+PuIDae5Kjdcy4qK37s6CquKq6hX7H6TrYp1BaxSOOz8DKjs3L3NrHyMfNz9rHwcCO3t7Cy478wcHaju3vnrC5o56Ynpqc3sLLju3L3NrHyMfNz9rHwcCO79tnt9xb86B70fE1XIutFPsh4/OjX9HvBjZXf2TIMorFv34NFUq1hG2x/gQke3RKUn6nqZke29uP");
-        private static int[] order = new int[] { 27,38,36,15,50,47,34,24,9,44,15,47,44,41,29,38,44,57,20,43,49,28,32,31,25,40,39,47,33,53,58,49,52,39,40,46,53,47,53,56,42,44,55,51,56,47,48,48,59,53,54,56,52,53,58,59,59,58,59,59,60 };
-        private static int key = 174;
+        private static byte[] data = System.Convert.FromBase64String("ARpbHLYPVssxvvPi158TxW9WZ1gJDg0IDA8KZisxDwkMDgwFDg0IDJTgQh4J9hnp5TPqV+ieGB8ty52QI63nInts1znRYkW4EdcKnmtwadBuWVBVXVJfWRxTUhxIVFVPHF9ZTrwoF+xVe6hKNcLIV7ESfJrLe3FDiQaRyDMyPK43jR0qEkjpADHnXio0Fzo9OTk7Pj0qIlRISExPBhMTSzo/aSEyOCo4KBfsVXuoSjXCyFexUlgcX1NSWFVIVVNSTxxTWhxJT1lYCR8pdyllIY+oy8qgovNshv1kbCoMKDo/aTg/LzF9TExQWRxuU1NIHFNaHEhUWRxIVFlSHF1MTFBVX12zT71c+idnNROujsR4dMxcBKIpyU5dX0hVX1kcT0hdSFlRWVJITxIMl59Nrntvaf2TE32PxMffTPHan3CCyE+n0u5YM/dFcwjkngLFRMNX9ExQWRx/WU5IVVpVX11IVVNSHH1JHF1SWBxfWU5IVVpVX11IVVNSHEwSfJrLe3FDNGIMIzo/aSEfOCQMKosnga9+GC4W+zMhinGgYl/0d7wrFrp0ussxPT05OTwMXg03DDU6P2kzoQHPF3UUJvTC8omFMuViIOr3AQy+OIcMvj+fnD8+PT4+PT4MMTo1MTo1Frp0ussxPT05OTw/vj09PGC3JbXixXdQyTuXHgw+1CQCxGw17zRiDL49LTo/aSEcOL49NAy+PTgMHH99DL49HgwxOjUWunS6yzE9PT0TDL3/OjQXOj05OTs+Pgy9iia9jxje1+2LTOMzed0b9s1RRNHbiSsr9SVOyWEy6UNjp84ZP4Zps3FhMc1VWlVfXUhVU1IcfUlIVFNOVUhFDY0MZNBmOA6wVI+zIeJZT8NbYlmAUFkcdVJfEg0aDBg6P2k4Ny8hfUxFHF1PT0lRWU8cXV9fWUxIXVJfWUYMvj1KDDI6P2khMz09wzg4Pz49DC06P2k4Ni82fUxMUFkcdVJfEg115EqjDyhZnUuo9RE+Pz08PZ++PTg6Lz5pbw0vDC06P2k4Ni82fUxM/F8PS8sGOxBq1+YzHTLmhk8lc4lIVFNOVUhFDSoMKDo/aTg/LzF9TA8KZgxeDTcMNTo/aTg6Lz5pbw0vXlBZHE9IXVJYXU5YHEhZTlFPHF1lmzk1QCt8ai0iSO+Ltx8He5/pU+UKQ/27aeWbpYUOfsfk6U2iQp1ueUIjcFdsqn21+EheNyy/fbsPtr06DDM6P2khLz09wzg5DD89PcMMITk8P749MzwMvj02Pr49PTzYrZU1qaJGMJh7t2foKgsP9/gzcfIoVe0aDBg6P2k4Ny8hfUxMUFkcf1lOSFuzNIgcy/eQEBxTTIoDPQywi3/zS0sSXUxMUFkSX1NRE11MTFBZX12+PTw6NRa6dLrLX1g5PQy9zgwWOiO5v7knpQF7C86Vp3yyEOiNrC7kCqVwEUSL0bCn4M9Lp85K7ksMc/1IVVpVX11IWRxeRRxdUkUcTF1OSExQWRxuU1NIHH99DCIrMQwKDAgOEBxfWU5IVVpVX11IWRxMU1BVX0U70EEFv7dvHO8E+I2DpnM2V8MXwEN9lKTF7fZaoBhXLeyfh9gnFv8jbJa26ebYwOw1OwuMSUkd");
+        private static int[] order = new int[] { 56,7,54,15,38,32,23,35,30,43,20,12,41,55,46,24,50,38,45,31,59,35,22,56,47,50,33,55,37,53,31,41,33,47,40,37,43,55,54,57,47,41,42,52,58,50,53,53,50,59,55,52,53,59,55,57,56,58,59,59,60 };
+        private static int key = 60;
+
+        public static readonly bool IsPopulated = true;
 
         public static byte[] Data() {
+        	if (IsPopulated == false)
+        		return null;
             return Obfuscator.DeObfuscate(data, order, key);
         }
     }
