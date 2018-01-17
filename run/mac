@@ -1,7 +1,4 @@
-#!/bin/tcsh
-
-# exit on error
-set -e
+#!/bin/tcsh -e
 
 clear
 
