@@ -11,9 +11,9 @@ endif
 
 # Define some variables
 setenv UNITY_HOME /Applications/${UNITY_VERSION}/Unity.app/Contents/MacOS
-setenv AUTO_HOME /Users/mohammed/Projects/auto
-setenv PROJECT_PATH /Users/mohammed/Projects/auto/iap/${UNITY_VERSION}
-setenv PKG_PATH /Users/mohammed/Projects/auto/pkg/iap.unitypackage
+setenv AUTO_HOME ${HOME}/Projects/auto
+setenv PROJECT_PATH ${HOME}/Projects/auto/iap/${UNITY_VERSION}
+setenv PKG_PATH ${HOME}/Projects/auto/pkg/iap.unitypackage
 
 # Clean unity project
 echo "(1) ---------- Cleaning up"
