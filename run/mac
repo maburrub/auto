@@ -1,4 +1,4 @@
-#!/bin/tcsh -e
+#!/bin/tcsh
 
 clear
 
@@ -47,18 +47,18 @@ else
 endif
 
 # Launch application
-echo "(4) ---------- Launching IAPAuto"
+echo "(4) ---------- Launching IAPDemo"
 echo open -a ${PROJECT_PATH}/Builds/OSX-Universal/${UNITY_VERSION}_mac.app
 echo
 open -a ${PROJECT_PATH}/Builds/OSX-Universal/${UNITY_VERSION}_mac.app
 
 # Quit application
 sleep 5
-echo "(5) ---------- Closing IAPAuto"
-echo osascript -e 'quit app "IAPAuto"'
+echo "(5) ---------- Closing IAPDemo"
+echo osascript -e 'quit app "IAPDemo"'
 echo
 if ($3 != "") then
-   osascript -e 'quit app "IAPAuto"'
+   osascript -e 'quit app "IAPDemo"'
 endif
 
 
