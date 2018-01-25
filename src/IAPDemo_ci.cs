@@ -87,8 +87,6 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 
         Debug.Log("Available items:");
 
-		/*-----------------------------------------------------------------------------------------*/
-
 		var client = new WebClient();
 
 		client.BaseAddress = "http://127.0.0.1:9999/reportResult";
@@ -102,8 +100,6 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 		result += "'Products':[";
 
 		int count = 0;
-
-		/*-----------------------------------------------------------------------------------------*/
 
         foreach (var item in controller.products.all)
         {
@@ -119,7 +115,6 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 						item.transactionID,
 						item.receipt
 					}));
-		/*-----------------------------------------------------------------------------------------*/
 
 				result += "{" +
 				"'title':'" + item.metadata.localizedTitle +
@@ -144,14 +139,12 @@ public class IAPDemo : MonoBehaviour, IStoreListener
 
 		result += "]}";
 
-		string reply = client.UploadString (client.BaseAddress, "POST", result);
-
-		/*-----------------------------------------------------------------------------------------*/
-
         // Populate the product menu now that we have Products
         AddProductUIs(m_Controller.products.all);
 
         LogProductDefinitions();
+
+        string reply = client.UploadString (client.BaseAddress, "POST", result);
     }
 
     /// <summary>

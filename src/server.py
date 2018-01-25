@@ -9,8 +9,11 @@ class HandleRequest():
         web.header('Content-Type', 'text/json; charset=utf-8')
        
     def POST(self, car_id=None):
-		print "---- reporting test result : ", web.data()
-		return web.data()
+        print "---- reporting test result : ", web.data()
+        f = open('result.json', 'w')  
+        f.write(web.data())  
+        f.close() 
+        return web.data()
     
 app = web.application(urls, globals())
 
