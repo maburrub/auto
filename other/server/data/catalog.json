@@ -1,0 +1,67 @@
+{
+	"appid": "fb6b9291-feb7-4560-a797-aab6ebb8c075",
+	"abGroup": 9,
+	"deviceid": "dfc91c0f538a0fa112c8f8c3897771ad",
+	"userid": "38974554eb96144fa81ded8e6f8d584f",
+	"catalog": {
+		"id": "moh-android-catalog-id-001",
+		"products": [{
+			"id": "100.gold.coins",
+			"name": "100 gold coins",
+			"enabled": true,
+			"store_ids": {
+				"amazonApps": "",
+				"appleAppStore": "com.unity3d.unityiap.unityiapdemo.100goldcoins.8",
+				"googlePlay": "com.eight.bit.avenue.amorcam.100coins.3",
+				"macAppStore": "com.unity3d.unityiap.unityiapdemo.100goldcoins.7",
+				"moolahAppStore": "",
+				"samsungApps": "",
+				"tizenStore": "",
+				"winRT": "com.eight.bit.avenue.100coins.1"
+			},
+			"type": "Consumable",
+			"Price": {
+				"apple": 0.99,
+				"google": 0.99
+			}
+		}, {
+			"id": "sword",
+			"name": "Sword",
+			"enabled": true,
+			"store_ids": {
+				"amazonApps": "",
+				"appleAppStore": "com.unity3d.unityiap.unityiapdemo.sword.8",
+				"googlePlay": "com.eight.bit.avenue.amorcam.sword.3",
+				"macAppStore": "com.unity3d.unityiap.unityiapdemo.sword.7",
+				"moolahAppStore": "",
+				"samsungApps": "",
+				"tizenStore": "",
+				"winRT": "com.eight.bit.avenue.sword.1"
+			},
+			"type": "NonConsumable",
+			"Price": {
+				"apple": 1.99,
+				"google": 1.99
+			}
+		}, {
+			"id": "subscription",
+			"name": "Subscription",
+			"enabled": true,
+			"store_ids": {
+				"amazonApps": "",
+				"appleAppStore": "com.unity3d.unityiap.unityiapdemo.subscription.non.8",
+				"googlePlay": "com.eight.bit.avenue.amorcam.subscription.3",
+				"macAppStore": "com.unity3d.unityiap.unityiapdemo.subscription.7",
+				"moolahAppStore": "",
+				"samsungApps": "",
+				"tizenStore": "",
+				"winRT": "com.eight.bit.avenue.subscription.1"
+			},
+			"type": "Subscription",
+			"Price": {
+				"apple": 2.99,
+				"google": 2.99
+			}
+		}]
+	}
+}
